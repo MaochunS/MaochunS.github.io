@@ -1,0 +1,11 @@
+{
+  "applinks": {
+    "apps": [],
+    "details": [
+    {
+      "appID": "RQXFK5449U.com.maochun.NFCReaderTestAPP",
+      "paths": ["*"]
+    }
+    ]
+  }
+}
