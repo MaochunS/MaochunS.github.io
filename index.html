@@ -1,10 +1,391 @@
 <!DOCTYPE html>
-<html>
+<!--[if lt IE 8 ]><html class="no-js ie ie7" lang="en"> <![endif]-->
+<!--[if IE 8 ]><html class="no-js ie ie8" lang="en"> <![endif]-->
+<!--[if (gte IE 8)|!(IE)]><!--><html class="no-js" lang="en"> <!--<![endif]-->
 <head>
-  <meta charset="UTF-8">
-  <title>Hello, GitHub</title>
+
+   <!--- Basic Page Needs
+   ================================================== -->
+   <meta charset="utf-8">
+	<title>Maochun</title>
+	<meta name="description" content="">
+	<meta name="author" content="">
+
+   <!-- Mobile Specific Metas
+   ================================================== -->
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+	<!-- CSS
+    ================================================== -->
+   <link rel="stylesheet" href="css/default.css">
+	<link rel="stylesheet" href="css/layout.css">
+   <link rel="stylesheet" href="css/media-queries.css">
+   <link rel="stylesheet" href="css/magnific-popup.css">
+
+   <!-- Script
+   ================================================== -->
+	<script src="js/modernizr.js"></script>
+
+   <!-- Favicons
+	================================================== -->
+	<link rel="shortcut icon" href="favicon.png" >
+
+
 </head>
+
 <body>
-  <h1>GitHub Web Test</h1>
+
+   <!-- Header
+   ================================================== -->
+   <header id="home">
+
+      <nav id="nav-wrap">
+
+         <a class="mobile-btn" href="#nav-wrap" title="Show navigation">Show navigation</a>
+	      <a class="mobile-btn" href="#" title="Hide navigation">Hide navigation</a>
+
+         <ul id="nav" class="nav">
+            <li class="current"><a class="smoothscroll" href="#home">Home</a></li>
+            <li><a class="smoothscroll" href="#about">About</a></li>
+	         <li><a class="smoothscroll" href="#skill">Skill</a></li>
+            <li><a class="smoothscroll" href="#work">Works</a></li>
+         </ul> <!-- end #nav -->
+
+      </nav> <!-- end #nav-wrap -->
+
+      <div class="row banner">
+         <div class="banner-text">
+            <h1 class="responsive-headline">Maochun</h1>
+            <h3>I'm an <span>iOS and Android developer</span>, creating awesome APPs to furfill user's requirements. Let's <a class="smoothscroll" href="#about">start scrolling</a>
+            and learn more <a class="smoothscroll" href="#about">about me</a>.</h3>
+            <hr />
+
+            <!--
+
+            
+            <ul class="social">
+               <li><a href="#"><i class="fa fa-facebook"></i></a></li>
+               <li><a href="#"><i class="fa fa-twitter"></i></a></li>
+               <li><a href="#"><i class="fa fa-google-plus"></i></a></li>
+               <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
+               <li><a href="#"><i class="fa fa-instagram"></i></a></li>
+               <li><a href="#"><i class="fa fa-dribbble"></i></a></li>
+               <li><a href="#"><i class="fa fa-skype"></i></a></li>
+            </ul>
+
+            -->
+         </div>
+      </div>
+
+      <p class="scrolldown">
+         <a class="smoothscroll" href="#about"><i class="icon-down-circle"></i></a>
+      </p>
+
+   </header> <!-- Header End -->
+
+
+   <!-- About Section
+   ================================================== -->
+   <section id="about">
+
+      <div class="row">
+
+         <div class="three columns">
+
+            <img class="profile-pic"  src="images/profilepic.png" alt="" />
+
+         </div>
+
+         <div class="nine columns main-col">
+
+            <h2>About Me</h2>
+
+            <p>Since I gradurated with a master's degree in CS in 2004, I keep working on software 
+               development, started from developing Windows applications using vc++ and c#. I worked in Singapore for five years 
+               and later moved to Taiwan. In my first job in Taiwan, i got a chance to develop Mac applications using Object-C. In 
+               year 2014 we developed both Android and Windows buildin applications for Acer, which mirrors the Acer phone screen 
+               to it's laptop. In year 2016, we started developing iOS APPs for different iPhone USB storage products and started to use Swift. 
+               I really love developing APPs in both iOS and Android. lately, I worked as a soho for a while to enjoin devleoping APPs all by myself. 
+               Currently, I am working in SecuX developing both iOS and Android APPs for the crypo-currency payment team.
+            </p>
+
+            <div class="row">
+
+               <div class="columns contact-details">
+
+                  <h2>Contact Info.</h2>
+                  <p class="address">
+                     <span>maochuns.sun@gmail.com</span>
+					   </p>
+
+               </div>
+
+               <div class="columns download">
+                  <p>
+                     <a href="#" class="button"><i class="fa fa-download"></i>Download Resume</a>
+                  </p>
+               </div>
+
+            </div> <!-- end row -->
+
+         </div> <!-- end .main-col -->
+
+      </div>
+
+   </section> <!-- About Section End-->
+
+
+   <!-- Resume Section
+   ================================================== -->
+   <section id="skill">
+
+      <!-- Skills
+      ----------------------------------------------- -->
+      <div class="row skill">
+
+         <div class="three columns header-col">
+            <h1><span>Skills</span></h1>
+         </div>
+
+         <div class="nine columns main-col">
+
+            <ul>
+               <li>XCode, Swift & Object-C</li>
+               <li>Android Studio, Java</li>
+               <li>Visual Studio, c# & c++</li>
+               <li>iOS framework and Android aar & ndk</li>
+               <li>iOS pod lib and Android Jitpack lib</li>
+               <li>Experience in BLE device related APP development in iOS, Android, Mac and Windows</li>
+               <li>Experience in building communications with backend server via Restful APIs</li>
+               <li>Experience in integration with third-party library, e.g. Google Map APIs, Firebase, Sentry</li>
+            </ul>
+				
+
+			</div> <!-- main-col end -->
+
+      </div> <!-- End skills -->
+
+   </section>
+
+
+   <section id="work">
+
+      <!-- Work
+      ----------------------------------------------- -->
+      <div class="row work">
+
+         <div class="three columns header-col">
+            <h1><span>Work</span></h1>
+         </div>
+
+         <div class="nine columns main-col">
+
+            <div class="row item">
+
+               <div class="twelve columns">
+
+                  <h3>SecuX EvPay</h3>
+                  <p class="info"><a href="https://www.secuxtech.com">SecuX tech.com</a><span>&bull;</span> <em class="date">iOS, Swift & Android, Java</em></p>
+               
+                  <p>
+                  SecuX EvPay APP gets payment / promotion / refund / refill info. by scanning the payment device's QRCode or 
+                  detecting device's NFC, then the APP communicates with the backend server to complete the operations 
+                  , and finally, send the result to device via BLE. 
+                  <br><a href="https://www.youtube.com/watch?v=kd_AOIfsp1Y&feature=youtu.be">Demo video</a></br>  
+                  </p>
+
+                  <div
+                  class="store-badge"
+                  data-name="Cheerswipe"
+                  data-google-play-url="https://play.google.com/store/apps/details?id=com.secuxtech.mysecuxpay"
+                  data-app-store-url="https://apps.apple.com/tw/app/secux-evpay/id1503309261"
+                  ></div>
+                  <script async src="https://cdn.jsdelivr.net/npm/store-badge@1/build/bundle.js"></script>
+
+               </div>
+
+            </div> <!-- item end -->
+
+            <hr style="height:2px;border-width:0;color:lightgray;background-color:lightgray">
+         
+
+            <div class="row item">
+
+               <div class="twelve columns">
+
+                  <h3>Stream Merchant</h3>
+                  <p class="info"><a href="https://www.secuxtech.com">SecuX tech.com</a><span>&bull;</span> <em class="date">Android, Java</em></p>
+
+                  <p>
+                     Stream Merchant is designed for merchant users to set up payment device(s), e.g. activate device, set coin/token to device, 
+                     update device FW ..., and the APP also provides merchant users to browse payment records, to refund payment and refill coin/token to
+                     other account.
+                     <br><a href="https://www.youtube.com/watch?v=kd_AOIfsp1Y&feature=youtu.be">Demo video</a></br>  
+                  </p>
+
+                  <div
+                  class="store-badge"
+                  data-name="Cheerswipe"
+                  data-google-play-url="https://play.google.com/store/apps/details?id=fr.puyou.cheerswipe"
+                  ></div>
+                  <script async src="https://cdn.jsdelivr.net/npm/store-badge@1/build/bundle.js"></script>
+
+               </div>
+
+            </div> <!-- item end -->
+
+            <hr style="height:2px;border-width:0;color:lightgray;background-color:lightgray">
+
+
+            <div class="row item">
+
+               <div class="twelve columns">
+
+                  <h3>FlipRAS</h3>
+                  <p class="info">Actura Co., Ltd.<span>&bull;</span> <em class="date">iOS (For iPad only), Swift</em></p>
+                  For kids robot programming edituration. Control FlipRobot via BLE. Set up DC and Servo motors' actions IDE. Code and FW burning via BLE.
+                  <br><a href="https://youtu.be/Iue1uH-P_MI">Demo video</a></br>
+                  </p>
+
+                  <div
+                  class="store-badge"
+                  data-name="Cheerswipe"
+                  data-app-store-url="https://apps.apple.com/is/app/flipras/id1481079129"
+                  ></div>
+
+               </div>
+
+            </div> <!-- item end -->
+
+            <hr style="height:2px;border-width:0;color:lightgray;background-color:lightgray">
+
+            <div class="row item">
+
+               <div class="twelve columns">
+
+                  <h3>FlipController</h3>
+                  <p class="info">Actura Co., Ltd.<span>&bull;</span> <em class="date">Windows UWP, C#</em></p>
+                
+                  <p>
+                  For kids robot programming edituration. Control the FlipRobot via BLE. Realtime control robot wheels and claws movement.
+                  <br><a href="https://youtu.be/elcAiEY07GI">Demo video</a></br>
+                  </p>
+
+               </div>
+
+            </div> <!-- item end -->
+
+            <hr style="height:2px;border-width:0;color:lightgray;background-color:lightgray">
+
+            <div class="row item">
+
+               <div class="twelve columns">
+
+                  <h3>舌壓計</h3>
+                  <p class="info">National Yang-Ming University<span>&bull;</span> <em class="date">iOS, Swift & Android, Java</em></p>
+                  <p>
+                  Display and record pressure data from the tongue pressure gauge via BLE. Find more in 
+                  <br><a href="https://youtu.be/AWiO7eRVxTI">Demo video</a></br>
+                  </p>
+                  <div
+                  class="store-badge"
+                  data-name="Cheerswipe"
+                  data-google-play-url="https://appstoreconnect.apple.com/apps/1450175739/appstore/ios/version/inflight"
+                  
+                  ></div>
+                  <script async src="https://www.youtube.com/watch?v=juM6UAC0R1E"></script>
+
+
+               </div>
+
+            </div> <!-- item end -->
+
+            <hr style="height:2px;border-width:0;color:lightgray;background-color:lightgray">
+
+         
+            <div class="row item">
+
+               <div class="twelve columns">
+
+                  <h3>物流士輔助助理</h3>
+                  <p class="info">Itri<span>&bull;</span> <em class="date">iOS, Swift & Android, Java</em></p>
+                  
+
+                  <div
+                     class="store-badge"
+                     data-name="Cheerswipe"
+                     data-google-play-url="https://play.google.com/store/apps/details?id=com.secuxtech.mysecuxpay"
+                     data-app-store-url="https://apps.apple.com/tw/app/secux-evpay/id1503309261"
+                  ></div>
+                  <script async src="https://cdn.jsdelivr.net/npm/store-badge@1/build/bundle.js"></script>
+
+               </div>
+
+            </div> <!-- item end -->
+
+            <hr style="height:2px;border-width:0;color:lightgray;background-color:lightgray">
+
+            <div class="row item">
+
+               <div class="twelve columns">
+
+                  <h3>iOS USB Storage APPs</h3>
+                  <p class="info">Oti.com<span>&bull;</span> <em class="date">iOS, Object-C</em></p>
+                  
+                  Provide file operations for iOS USB thumb drive.
+
+                  <p>
+                     File-x Pro   
+                  </p>
+
+                  <div
+                     class="store-badge"
+                     data-name="Cheerswipe"
+                     data-app-store-url="https://apps.apple.com/us/app/filex-pro/id1121227957"
+                  ></div>
+
+                  <p>Pendrive iFlash Pro</p>
+                  <div
+                  class="store-badge"
+                  data-name="Cheerswipe"
+                  data-app-store-url="https://apps.apple.com/tw/app/pendrive-iflash-pro/id1079282487"
+                  ></div>
+
+
+               </div>
+
+            </div> <!-- item end -->
+
+         </div> <!-- main-col end -->
+
+      </div> <!-- End Work -->
+
+   </section> <!-- Resume Section End-->
+
+
+
+   <footer>
+
+      <div class="row">
+
+         <div id="go-top"><a class="smoothscroll" title="Back to Top" href="#home"><i class="icon-up-open"></i></a></div>
+
+      </div>
+
+   </footer>
+
+   <!-- Java Script
+   ================================================== -->
+   <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+   <script>window.jQuery || document.write('<script src="js/jquery-1.10.2.min.js"><\/script>')</script>
+   <script type="text/javascript" src="js/jquery-migrate-1.2.1.min.js"></script>
+
+   <script src="js/jquery.flexslider.js"></script>
+   <script src="js/waypoints.js"></script>
+   <script src="js/jquery.fittext.js"></script>
+   <script src="js/magnific-popup.js"></script>
+   <script src="js/init.js"></script>
+
 </body>
+
 </html>
