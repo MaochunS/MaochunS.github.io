@@ -205,7 +205,7 @@ ul#nav li.current a { color: #11ABB0; }
    margin-bottom: 12px;
 }
 #about p {
-   font: 15px 'opensans-bold', sans-serif;
+   font: 17px/24px 'librebaskerville-italic', serif;
    line-height: 30px;
    color: #7A7A7A;
 }
