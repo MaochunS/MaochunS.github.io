@@ -8,4 +8,8 @@
             }
         ]
     }
+
+   "appclips": {
+        "apps": ["RQXFK5449U.com.maochun.MyTestApp.Clip"]
+  }
 }
