@@ -1,15 +1,11 @@
 {
-  "applinks": {
-    "apps": [],
-    "details": [
-    {
-      "appID": "RQXFK5449U.com.maochun.MyTestApp",
-      "paths": ["*"]
+    "applinks": {
+        "apps": [],
+        "details": [
+            {
+                "appID": "RQXFK5449U.com.maochun.MyTestApp",
+                "paths": [ "/products/*"]
+            }
+        ]
     }
-    ]
-  }
-
-  "appclips": {
-        "apps": ["RQXFK5449U.com.maochun.MyTestApp.Clip"]
-  }
 }
