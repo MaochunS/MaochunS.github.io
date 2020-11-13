@@ -3,10 +3,16 @@
         "apps": [],
         "details": [
             {
-                "appID": "RQXFK5449U.com.maochun.MyTestApp",
-                "paths": [ "/products/*"]
+                "appID": "439P2P24S8.com.secux.MyEvPay",
+                "paths": [
+                    "*"
+                ]
             }
         ]
-    }
-
+    },
+   
+    "appclips": {
+        "apps": ["439P2P24S8.com.secux.MyEvPay.Clip"]
+    }	
+	
 }
