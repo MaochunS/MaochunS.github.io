@@ -1,16 +1,4 @@
 {
-    "applinks": {
-        "apps": [],
-        "details": [
-            {
-                "appID": "439P2P24S8.com.secux.MyEvPay",
-                "paths": [
-                    "*"
-                ]
-            }
-        ]
-    },
-   
     "appclips": {
         "apps": ["439P2P24S8.com.secux.MyEvPay.Clip"]
     }	
