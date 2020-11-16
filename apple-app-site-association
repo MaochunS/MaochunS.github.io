@@ -7,9 +7,5 @@
       "paths": ["*"]
     }
     ]
-  },
-
-  "appclips": {
-        "apps": ["RQXFK5449U.com.maochun.ClipTest.Clip"]
   }
 }
