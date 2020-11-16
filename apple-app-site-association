@@ -3,9 +3,13 @@
     "apps": [],
     "details": [
     {
-      "appID": "RQXFK5449U.com.maochun.ClipTest,
+      "appID": "RQXFK5449U.com.maochun.ClipTest",
       "paths": ["*"]
     }
     ]
+  },
+
+  "appclips": {
+        "apps": ["RQXFK5449U.com.maochun.ClipTest.Clip"]
   }
 }
