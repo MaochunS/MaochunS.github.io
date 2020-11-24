@@ -3,7 +3,7 @@
     "apps": [],
     "details": [
     {
-      "appID": "439P2P24S8.com.secux.MyEvPay"
+      "appID": "439P2P24S8.com.secux.MyEvPay",
       "paths": ["*"]
     }
     ]
