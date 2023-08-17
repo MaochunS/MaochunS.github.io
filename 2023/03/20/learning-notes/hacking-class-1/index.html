@@ -1,0 +1,379 @@
+<!DOCTYPE html><html lang="en" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0"><title>道德駭客實務入門-3/18課程筆記 | Maochun's blog</title><meta name="author" content="Maochun"><meta name="copyright" content="Maochun"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="The class on 3&#x2F;18 introduced general hacking concepts and focused on the reconnaissance (偵察) stage of hacking. The notes here lists some reconnaissance tools introduced in the class.">
+<meta property="og:type" content="article">
+<meta property="og:title" content="道德駭客實務入門-3&#x2F;18課程筆記">
+<meta property="og:url" content="https://maochuns.github.io/2023/03/20/learning-notes/hacking-class-1/index.html">
+<meta property="og:site_name" content="Maochun&#39;s blog">
+<meta property="og:description" content="The class on 3&#x2F;18 introduced general hacking concepts and focused on the reconnaissance (偵察) stage of hacking. The notes here lists some reconnaissance tools introduced in the class.">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://maochuns.github.io/img/avatar.jpg">
+<meta property="article:published_time" content="2023-03-20T01:24:41.000Z">
+<meta property="article:modified_time" content="2023-07-01T03:56:54.849Z">
+<meta property="article:author" content="Maochun">
+<meta property="article:tag" content="Hacking">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://maochuns.github.io/img/avatar.jpg"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="https://maochuns.github.io/2023/03/20/learning-notes/hacking-class-1/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: 'Copy successfully',
+    error: 'Copy error',
+    noSupport: 'The browser does not support'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  date_suffix: {
+    just: 'Just',
+    min: 'minutes ago',
+    hour: 'hours ago',
+    day: 'days ago',
+    month: 'months ago'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  }
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '道德駭客實務入門-3/18課程筆記',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2023-07-01 11:56:54'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+    win.getCSS = url => new Promise((resolve, reject) => {
+      const link = document.createElement('link')
+      link.rel = 'stylesheet'
+      link.href = url
+      link.onload = () => resolve()
+      link.onerror = () => reject()
+      document.head.appendChild(link)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><meta name="generator" content="Hexo 6.3.0"></head><body><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/pace-js/themes/blue/pace-theme-minimal.min.css"/><script src="https://cdn.jsdelivr.net/npm/pace-js/pace.min.js"></script><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/img/avatar.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">Articles</div><div class="length-num">51</div></a><a href="/tags/"><div class="headline">Tags</div><div class="length-num">16</div></a><a href="/categories/"><div class="headline">Categories</div><div class="length-num">6</div></a></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> Categories</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> About</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="not-top-img" id="page-header"><nav id="nav"><span id="blog-info"><a href="/" title="Maochun's blog"><span class="site-name">Maochun's blog</span></a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> Categories</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> About</span></a></div></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav></header><main class="layout" id="content-inner"><div id="post"><div id="post-info"><h1 class="post-title">道德駭客實務入門-3/18課程筆記</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">Created</span><time class="post-meta-date-created" datetime="2023-03-20T01:24:41.000Z" title="Created 2023-03-20 09:24:41">2023-03-20</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">Updated</span><time class="post-meta-date-updated" datetime="2023-07-01T03:56:54.849Z" title="Updated 2023-07-01 11:56:54">2023-07-01</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/Learning-notes/">Learning notes</a></span></div><div class="meta-secondline"></div></div></div><article class="post-content" id="article-container"><p><a target="_blank" rel="noopener" href="https://www.tibame.com/offline/ceh">TibaMe: 道德駭客實務入門及CEH認證班</a><br>Teacher: 林煌錡 (Alex Lin)<br><img src="/img/hacking-class/hacking-class-info.png"></p>
+<blockquote>
+<p>The class on 3&#x2F;18 introduced general hacking concepts and focused on the reconnaissance (偵察) stage of hacking.<br>I am really interested in the reconnaissance (偵察) tools, most of which I have never heard of before.<br>Below are some tools introduced in the class.</p>
+</blockquote>
+<h1 id="Framework"><a href="#Framework" class="headerlink" title="Framework"></a>Framework</h1><h2 id="Cyber-Kill-Chain"><a href="#Cyber-Kill-Chain" class="headerlink" title="Cyber Kill Chain"></a>Cyber Kill Chain</h2><ul>
+<li>The image below is from Teacher <strong>Alex Lin</strong>‘s class PPT<br><img src="/img/hacking-class/cyber-kill-chain.png"></li>
+</ul>
+<h2 id="ATT-amp-CK"><a href="#ATT-amp-CK" class="headerlink" title="ATT&amp;CK"></a>ATT&amp;CK</h2><ul>
+<li><a target="_blank" rel="noopener" href="https://zh.wikipedia.org/zh-tw/ATT%26CK">ATT&amp;CK Wiki</a></li>
+<li>Link: <a target="_blank" rel="noopener" href="https://mitre-attack.github.io/attack-navigator/">https://mitre-attack.github.io/attack-navigator/</a><br><img src="/img/hacking-class/mitre-1.png"><br><img src="/img/hacking-class/mitre-2.png"></li>
+<li>There is an ID for each hacking technique. You can obtain details of each technique from <a target="_blank" rel="noopener" href="https://attack.mitre.org/techniques/enterprise/">https://attack.mitre.org/techniques/enterprise/</a><div class="gallery">
+    <div class="fj-gallery " data-rowHeight="220" data-limit="10">
+    <span class="gallery-data">[{"url":"/img/hacking-class/mitre-3.png","alt":""},{"url":"/img/hacking-class/mitre-4.png","alt":""}]</span>
+    </div>
+    <button class="gallery-load-more"><span>Load More</span><i class="fa-solid fa-arrow-down"></i></button>
+    </div></li>
+</ul>
+<h1 id="Reconnaissance-Tools"><a href="#Reconnaissance-Tools" class="headerlink" title="Reconnaissance Tools"></a>Reconnaissance Tools</h1><blockquote>
+<p>偵察的目地主要是尋找目標。</p>
+</blockquote>
+<h2 id="Google-Hacking"><a href="#Google-Hacking" class="headerlink" title="Google Hacking"></a>Google Hacking</h2><ul>
+<li><a target="_blank" rel="noopener" href="https://zh.wikipedia.org/zh-tw/%E8%B0%B7%E6%AD%8C%E9%A7%AD%E4%BE%B5%E6%B3%95">Google Hacking Wiki</a><br>Google Hacking 意思是：熟悉<a target="_blank" rel="noopener" href="https://www.googleguide.com/advanced_operators_reference.html">Google search operators</a>，你就有可能用Google找到適合攻擊的目標。</li>
+<li><a target="_blank" rel="noopener" href="https://www.exploit-db.com/google-hacking-database">Google Hacking Database</a><br>Google Hacking 指令集。 看了指令集才感嘆自己對Google大神了解太少。</li>
+<li>可以使用<strong>robots.txt</strong>來阻止搜尋引擎來抓取內容。也看到有人說加了也不一定能擋。<br><a target="_blank" rel="noopener" href="https://developers.google.com/search/docs/crawling-indexing/robots/create-robots-txt?hl=zh-tw">https://developers.google.com/search/docs/crawling-indexing/robots/create-robots-txt?hl=zh-tw</a></li>
+</ul>
+<h2 id="DNS-related-tools"><a href="#DNS-related-tools" class="headerlink" title="DNS related tools"></a>DNS related tools</h2><ul>
+<li><p><strong>DNSdumpsters</strong><br><a target="_blank" rel="noopener" href="https://dnsdumpster.com/">https://dnsdumpster.com</a><br>輸入域名可以看見域名下所有的Server，和一些訊息， e.g. Web server used, on cloud or not.<br>輸入公司域名果然列出公司所有server。<br><img src="/img/hacking-class/dnsdumpster-1.png"><br>有完整的 Domain map.<br><img src="/img/hacking-class/dnsdumpster-2.png"><br>還可以對Server做port掃瞄<br><img src="/img/hacking-class/dnsdumpster-3.png"></p>
+</li>
+<li><p><strong>DNSrecon (Kali內建)</strong><br><a target="_blank" rel="noopener" href="https://www.kali.org/tools/dnsrecon/">https://www.kali.org/tools/dnsrecon/</a></p>
+</li>
+<li><p><strong>Sbulist3r (Kali內建)</strong><br><a target="_blank" rel="noopener" href="https://www.kali.org/tools/sublist3r/">https://www.kali.org/tools/sublist3r/</a></p>
+</li>
+</ul>
+<h2 id="Server-analysis-tools"><a href="#Server-analysis-tools" class="headerlink" title="Server analysis tools"></a>Server analysis tools</h2><ul>
+<li><strong>Netcraft</strong><br><a target="_blank" rel="noopener" href="https://sitereport.netcraft.com/">https://sitereport.netcraft.com</a><br>掃瞄Server找問題。<br>首先掃了自己的server看到一個risk，非常焦慮。<br><img src="/img/hacking-class/netcraft-1.png"><br>然後掃了公司的另幾台server看到一樣有一個risk，就不焦慮了。<br><img src="/img/hacking-class/netcraft-2.png"></li>
+</ul>
+<p>這個risk問題跟朋友討論後，覺的不是嚴重問題，之後會往討論的方向去嘗試改動。</p>
+<p>又掃了公司的官網，看到Web Trackers，不能確定這是什麼。<br>後來查了一下，應該是網頁有加Google Analytics，是正常Tracker。<br><img src="/img/hacking-class/netcraft-3.png"></p>
+<ul>
+<li><p><strong>virtustotal</strong><br>一樣掃瞄Server找問題。<br><a target="_blank" rel="noopener" href="https://www.virustotal.com/gui/home/url">https://www.virustotal.com/gui/home/url</a><br>用這個掃了自己的server是clean的。</p>
+</li>
+<li><p><strong>Whois</strong><br><a target="_blank" rel="noopener" href="https://whois.domaintools.com/">https://whois.domaintools.com</a><br>輸入域名可以看見完整的Domain profile。也可以從ip反查域名。</p>
+<div class="gallery">
+    <div class="fj-gallery " data-rowHeight="220" data-limit="10">
+    <span class="gallery-data">[{"url":"/img/hacking-class/whois-1.png","alt":""},{"url":"/img/hacking-class/whois-2.png","alt":""}]</span>
+    </div>
+    <button class="gallery-load-more"><span>Load More</span><i class="fa-solid fa-arrow-down"></i></button>
+    </div>
+</li>
+<li><p><strong>Traceroute</strong><br>我架的Server access不到，看到MIS用這個Command來抓問題。<br><img src="/img/hacking-class/traceroute.png"></p>
+</li>
+</ul>
+<h2 id="Service-Search-engine"><a href="#Service-Search-engine" class="headerlink" title="Service Search engine"></a>Service Search engine</h2><ul>
+<li><p><strong>Censys</strong><br><a target="_blank" rel="noopener" href="https://search.censys.io/">https://search.censys.io</a><br>非常強大的服務搜尋引擎。我輸入公司名稱果然可以找到很多公司的router。<br><img src="/img/hacking-class/censys.png"></p>
+</li>
+<li><p><strong>Shodan</strong><br>比Censys更強大，可以分區域查找。可看訊息也更多。<br><a target="_blank" rel="noopener" href="https://www.shodan.io/">https://www.shodan.io</a><br><img src="/img/hacking-class/shodan.png"><br>點進裝置還有所有Open Ports 和 Vulnerabilities!<br><img src="/img/hacking-class/shodan-2.png"></p>
+</li>
+<li><p><strong>Fofa</strong><br><a target="_blank" rel="noopener" href="https://en.fofa.info/">https://en.fofa.info</a><br>可以針對某個漏洞去找有問題的Server.<br>比如，我查找台灣Server有log4j問題的，就列了一堆。<br><img src="/img/hacking-class/fofa.png"></p>
+</li>
+</ul>
+<p>Shodan &amp; Fofa更多精準搜尋推薦<br><a target="_blank" rel="noopener" href="https://tech-blog.cymetrics.io/posts/nick/shodan-fofa/">https://tech-blog.cymetrics.io/posts/nick/shodan-fofa/</a></p>
+<ul>
+<li><strong>ZoomEy</strong><br>For China area</li>
+</ul>
+<h2 id="Web-crawling-tools"><a href="#Web-crawling-tools" class="headerlink" title="Web crawling tools"></a>Web crawling tools</h2><ul>
+<li><p>BurpSuite<br><a target="_blank" rel="noopener" href="https://portswigger.net/burp">https://portswigger.net/burp</a></p>
+</li>
+<li><p>HTTrack<br><a target="_blank" rel="noopener" href="https://www.httrack.com/page/2/en/index.html">https://www.httrack.com/page/2/en/index.html</a><br>沒有實測，看了下面的文章，用HTTrack可以完整抓下整個網站內容。<br><a target="_blank" rel="noopener" href="https://www.minwt.com/webdesign-dev/html/15898.html">https://www.minwt.com/webdesign-dev/html/15898.html</a></p>
+</li>
+<li><p>Web archive<br><a target="_blank" rel="noopener" href="http://web.archive.org/">http://web.archive.org</a><br>真是一個神奇的時光機器。完整紀錄了網站的歷史，有Snapshot。<br><img src="/img/hacking-class/web-archive.png"></p>
+</li>
+<li><p>Octoparse<br><a target="_blank" rel="noopener" href="https://www.octoparse.com/">https://www.octoparse.com</a><br>抓取整個網站內容工具，要付費。</p>
+</li>
+<li><p>ceWL (Kali內建)<br><a target="_blank" rel="noopener" href="https://www.kali.org/tools/cewl/">https://www.kali.org/tools/cewl/</a></p>
+</li>
+<li><p>metagoofil (Kali內建)<br><a target="_blank" rel="noopener" href="https://www.kali.org/tools/metagoofil/">https://www.kali.org/tools/metagoofil/</a></p>
+</li>
+</ul>
+<h2 id="Email-analysis-tools"><a href="#Email-analysis-tools" class="headerlink" title="Email analysis tools"></a>Email analysis tools</h2><p>從email中獲取各種訊息，比如說email伺服器地址。</p>
+<ul>
+<li><p><a target="_blank" rel="noopener" href="https://mha.azurewebsites.net/">Email header analysis tool</a></p>
+</li>
+<li><p>theHarvester (Kali內建)<br><a target="_blank" rel="noopener" href="https://www.kali.org/tools/theharvester/">https://www.kali.org/tools/theharvester/</a></p>
+</li>
+<li><p>infoga</p>
+</li>
+</ul>
+<h2 id="Collect-info-from-social-media-tools"><a href="#Collect-info-from-social-media-tools" class="headerlink" title="Collect info. from social media tools"></a>Collect info. from social media tools</h2><p>這個部分感覺主要用於行銷和廣告投放，先跳過好了。</p>
+<ul>
+<li><p>Buzzsumo</p>
+</li>
+<li><p>Followerwonk</p>
+</li>
+<li><p>Sherlock</p>
+</li>
+<li><p>Social searcher</p>
+</li>
+<li><p>DarkWeb</p>
+</li>
+</ul>
+<h2 id="Open-source-intelligence-OSINT"><a href="#Open-source-intelligence-OSINT" class="headerlink" title="Open-source intelligence (OSINT)"></a>Open-source intelligence (OSINT)</h2><ul>
+<li><p>OSINT framework<br>這個網頁可以引導你去各種搜尋工具。<br><a target="_blank" rel="noopener" href="https://osintframework.com/">https://osintframework.com</a><br><img src="/img/hacking-class/osint.png"></p>
+</li>
+<li><p>Maltego<br><a target="_blank" rel="noopener" href="https://www.maltego.com/">https://www.maltego.com</a><br>屬於付費工具。</p>
+</li>
+<li><p>Recon-ng (Kali內建)<br><a target="_blank" rel="noopener" href="https://www.kali.org/tools/recon-ng/">https://www.kali.org/tools/recon-ng/</a></p>
+</li>
+<li><p>Osrframework (Kali內建)<br><a target="_blank" rel="noopener" href="https://www.kali.org/tools/osrframework/">https://www.kali.org/tools/osrframework/</a></p>
+</li>
+</ul>
+<h1 id="Network-scan-command-line-tools"><a href="#Network-scan-command-line-tools" class="headerlink" title="Network scan command line tools"></a>Network scan command line tools</h1><blockquote>
+<p>以下command line tools都內建在Kali中。</p>
+</blockquote>
+<h2 id="NMAP"><a href="#NMAP" class="headerlink" title="NMAP"></a><a target="_blank" rel="noopener" href="https://nmap.org/book/man.html">NMAP</a></h2><p>指令集：<a target="_blank" rel="noopener" href="http://www.osslab.tw/books/linux-administration/page/nmap-%E5%B8%B8%E7%94%A8%E6%8C%87%E4%BB%A4%E9%9B%86">http://www.osslab.tw/books/linux-administration/page/nmap-常用指令集</a><br>NMAP也有提供圖形化介面工具。</p>
+<ul>
+<li><p>Scan a host</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo nmap 192.168.1.1</span><br><span class="line">sudo nmap -v 192.168.1.1</span><br></pre></td></tr></table></figure>
+<p><img src="/img/hacking-class/nmap-1.png"></p>
+</li>
+<li><p>No response from these commands </p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo nmap 192.168.105.0/24</span><br><span class="line">sudo nmap -A 192.168.105.2</span><br></pre></td></tr></table></figure>
+<p><img src="/img/hacking-class/nmap-2.png"></p>
+</li>
+<li><p>Scan host in a range</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo nmap -sP 192.168.105.0/24</span><br></pre></td></tr></table></figure>
+<p><img src="/img/hacking-class/nmap-3.png"></p>
+</li>
+<li><p>Scan host ports</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sudo nmap --top-ports 10 192.168.105.2</span><br><span class="line">sudo nmap --top-ports 10 192.168.105.0/24</span><br><span class="line">sudo nmap -PN 192.168.105.2</span><br></pre></td></tr></table></figure>
+<div class="gallery">
+    <div class="fj-gallery " data-rowHeight="220" data-limit="10">
+    <span class="gallery-data">[{"url":"/img/hacking-class/nmap-4.png","alt":""},{"url":"/img/hacking-class/nmap-5.png","alt":""},{"url":"/img/hacking-class/nmap-6.png","alt":""}]</span>
+    </div>
+    <button class="gallery-load-more"><span>Load More</span><i class="fa-solid fa-arrow-down"></i></button>
+    </div>
+</li>
+<li><p>nmap -v -sV –script&#x3D;nfs-showmount 192.168.105.2 </p>
+<div class="gallery">
+    <div class="fj-gallery " data-rowHeight="220" data-limit="10">
+    <span class="gallery-data">[{"url":"/img/hacking-class/nmap-7.png","alt":""},{"url":"/img/hacking-class/nmap-8.png","alt":""},{"url":"/img/hacking-class/nmap-9.png","alt":""}]</span>
+    </div>
+    <button class="gallery-load-more"><span>Load More</span><i class="fa-solid fa-arrow-down"></i></button>
+    </div></li>
+</ul>
+<h2 id="HPING3"><a href="#HPING3" class="headerlink" title="HPING3"></a>HPING3</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sudo hping3 -A 192.168.105.2 -p 443</span><br><span class="line">sudo hping3 -2 192.168.105.2 -p 443</span><br><span class="line">sudo hping3 -1 192.168.105.x --rand-dest -I eth0</span><br></pre></td></tr></table></figure>
+<div class="gallery">
+    <div class="fj-gallery " data-rowHeight="220" data-limit="10">
+    <span class="gallery-data">[{"url":"/img/hacking-class/hping-1.png","alt":""},{"url":"/img/hacking-class/hping-2.png","alt":""},{"url":"/img/hacking-class/hping-3.png","alt":""}]</span>
+    </div>
+    <button class="gallery-load-more"><span>Load More</span><i class="fa-solid fa-arrow-down"></i></button>
+    </div>
+
+<h2 id="massscan"><a href="#massscan" class="headerlink" title="massscan"></a>massscan</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo masscan -p80,443 192.168.105.0/24</span><br></pre></td></tr></table></figure>
+<p><img src="/img/hacking-class/massscan.png"></p>
+<h1 id="Host-scan"><a href="#Host-scan" class="headerlink" title="Host scan"></a>Host scan</h1><blockquote>
+<p>主機掃描目地主要是針對選定目標收集更多資訊。</p>
+</blockquote>
+<h2 id="ARP-scan"><a href="#ARP-scan" class="headerlink" title="ARP scan"></a>ARP scan</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo nmap -sn -PR 192.168.11.0/24</span><br></pre></td></tr></table></figure>
+
+<h2 id="UDP-scan"><a href="#UDP-scan" class="headerlink" title="UDP scan"></a>UDP scan</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo nmap -sn -PU -Pn 192.168.105.193</span><br></pre></td></tr></table></figure>
+
+<h2 id="ICMP-scan"><a href="#ICMP-scan" class="headerlink" title="ICMP scan"></a>ICMP scan</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sudo nmap -sn --disable-arp-ping -PE 192.168.1.0/24</span><br><span class="line">sudo nmap -sn --disable-arp-ping -PP 192.168.1.0/24</span><br><span class="line">sudo nmap -sn --disable-arp-ping -PM 192.168.1.0/24</span><br></pre></td></tr></table></figure>
+
+<h2 id="TCP-scan"><a href="#TCP-scan" class="headerlink" title="TCP scan"></a>TCP scan</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">sudo nmap --disable-arp-ping -sT 192.168.105.193 -p 445</span><br><span class="line">sudo nmap --disable-arp-ping -sS 192.168.105.193 -p 445</span><br><span class="line">sudo nmap --disable-arp-ping -sX 192.168.105.193 -p 445</span><br><span class="line">sudo nmap --disable-arp-ping -sU 192.168.105.193 -p 5900</span><br></pre></td></tr></table></figure>
+
+<h2 id="SCTP-scan"><a href="#SCTP-scan" class="headerlink" title="SCTP scan"></a>SCTP scan</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo nmap --disable-arp- ping -sY 192.168.105.193 -p 10000</span><br><span class="line">sudo nmap --disable-arp- ping -sY 192.168.105.* -p 10000</span><br></pre></td></tr></table></figure>
+
+<h1 id="OS-fingerprint"><a href="#OS-fingerprint" class="headerlink" title="OS fingerprint"></a>OS fingerprint</h1><h2 id="TTL長度辯識OS"><a href="#TTL長度辯識OS" class="headerlink" title="TTL長度辯識OS"></a>TTL長度辯識OS</h2><p>Linux       -&gt; 64<br>Windows     -&gt; 128<br>Solaris&#x2F;AIX -&gt; 254</p>
+<h2 id="nmap-commands"><a href="#nmap-commands" class="headerlink" title="nmap commands"></a>nmap commands</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo nmap -Pn --disable-arp-ping -O 192.168.105.2</span><br><span class="line">sudo nmap -Pn --disable-arp-ping -A 192.168.105.2</span><br></pre></td></tr></table></figure>
+
+<h1 id="Scan-bypass-IDS-amp-firewall"><a href="#Scan-bypass-IDS-amp-firewall" class="headerlink" title="Scan bypass IDS &amp; firewall"></a>Scan bypass IDS &amp; firewall</h1><h2 id="封包分段-Packet-Fragmentation"><a href="#封包分段-Packet-Fragmentation" class="headerlink" title="封包分段(Packet Fragmentation)"></a>封包分段(Packet Fragmentation)</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">ping -l 1473 192.168.1.x</span><br><span class="line">sudo nmap -Pn -sS -sV --send-eth --mtu 8 -p 443 nmap.scame.org</span><br><span class="line">sudo nmap -Pn -sS -sV --send-eth -f -p 443 nmap.scame.org</span><br></pre></td></tr></table></figure>
+
+<h2 id="通訊埠來源修改-Source-Port-Manipulation"><a href="#通訊埠來源修改-Source-Port-Manipulation" class="headerlink" title="通訊埠來源修改(Source Port Manipulation)"></a>通訊埠來源修改(Source Port Manipulation)</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo nmap -g 80 -p 445 192.168.1.250</span><br></pre></td></tr></table></figure>
+
+<h2 id="IP-位址誘餌-IP-Decoy"><a href="#IP-位址誘餌-IP-Decoy" class="headerlink" title="IP 位址誘餌(IP Decoy)"></a>IP 位址誘餌(IP Decoy)</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo nmap -D RND:10 192.168.1.250</span><br></pre></td></tr></table></figure>
+
+<h2 id="IP-位址欺騙-IP-Spoofing"><a href="#IP-位址欺騙-IP-Spoofing" class="headerlink" title="IP 位址欺騙(IP Spoofing)"></a>IP 位址欺騙(IP Spoofing)</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo nmap -e eth1 --disable-arp -Pn -S 192.168.40.5 -p 445 192.168.1.250</span><br></pre></td></tr></table></figure>
+
+<h2 id="代理伺服器-Proxy"><a href="#代理伺服器-Proxy" class="headerlink" title="代理伺服器(Proxy)"></a>代理伺服器(Proxy)</h2><ul>
+<li><p>TOR<br><a target="_blank" rel="noopener" href="https://www.torproject.org/">https://www.torproject.org</a><br>Wiki: <a target="_blank" rel="noopener" href="https://zh.wikipedia.org/zh-tw/Tor">https://zh.wikipedia.org/zh-tw/Tor</a></p>
+</li>
+<li><p>VPN<br><a target="_blank" rel="noopener" href="https://www.vpngate.net/cn/">https://www.vpngate.net/cn/</a></p>
+</li>
+</ul>
+</article><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/Hacking/">Hacking</a></div><div class="post_share"></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2023/03/27/learning-notes/hacking-class-2/" title="道德駭客實務入門-3/26課程筆記"><div class="cover" style="background: var(--default-bg-color)"></div><div class="pagination-info"><div class="label">Previous Post</div><div class="prev_info">道德駭客實務入門-3/26課程筆記</div></div></a></div><div class="next-post pull-right"><a href="/2023/03/20/learning-notes/hacking-class-0/" title="道德駭客實務入門-課前準備"><div class="cover" style="background: var(--default-bg-color)"></div><div class="pagination-info"><div class="label">Next Post</div><div class="next_info">道德駭客實務入門-課前準備</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>Related Articles</span></div><div class="relatedPosts-list"><div><a href="/2023/03/20/learning-notes/hacking-class-0/" title="道德駭客實務入門-課前準備"><div class="cover" style="background: var(--default-bg-color)"></div><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-03-20</div><div class="title">道德駭客實務入門-課前準備</div></div></a></div><div><a href="/2023/03/27/learning-notes/hacking-class-2/" title="道德駭客實務入門-3&#x2F;26課程筆記"><div class="cover" style="background: var(--default-bg-color)"></div><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-03-27</div><div class="title">道德駭客實務入門-3&#x2F;26課程筆記</div></div></a></div><div><a href="/2023/04/10/learning-notes/hacking-class-3-2/" title="道德駭客實務入門-4&#x2F;8課程筆記-2"><div class="cover" style="background: var(--default-bg-color)"></div><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-04-10</div><div class="title">道德駭客實務入門-4&#x2F;8課程筆記-2</div></div></a></div><div><a href="/2023/04/10/learning-notes/hacking-class-3-3/" title="道德駭客實務入門-4&#x2F;8課程筆記-3"><div class="cover" style="background: var(--default-bg-color)"></div><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-04-10</div><div class="title">道德駭客實務入門-4&#x2F;8課程筆記-3</div></div></a></div><div><a href="/2023/04/10/learning-notes/hacking-class-3/" title="道德駭客實務入門-4&#x2F;8課程筆記-1"><div class="cover" style="background: var(--default-bg-color)"></div><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-04-10</div><div class="title">道德駭客實務入門-4&#x2F;8課程筆記-1</div></div></a></div><div><a href="/2023/04/17/learning-notes/hacking-class-4/" title="道德駭客實務入門-4&#x2F;15課程筆記"><div class="cover" style="background: var(--default-bg-color)"></div><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-04-17</div><div class="title">道德駭客實務入門-4&#x2F;15課程筆記</div></div></a></div></div></div><hr/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> Comment</span></div></div><div class="comment-wrap"><div><div id="disqus_thread"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="/img/avatar.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">Maochun</div><div class="author-info__description">對酒當歌，人生幾何</div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">Articles</div><div class="length-num">51</div></a><a href="/tags/"><div class="headline">Tags</div><div class="length-num">16</div></a><a href="/categories/"><div class="headline">Categories</div><div class="length-num">6</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/MaochunS"><i class="fab fa-github"></i><span>My Github</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="mailto:m20211222@gmail.com" target="_blank" title="Email"><i class="fas fa-envelope"></i></a><a class="social-icon" href="https://www.linkedin.com/in/maochun-s-4318b11ba" target="_blank" title="LinkedIn"><i class="fab fa-linkedin"></i></a></div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>Catalog</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Framework"><span class="toc-number">1.</span> <span class="toc-text">Framework</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Cyber-Kill-Chain"><span class="toc-number">1.1.</span> <span class="toc-text">Cyber Kill Chain</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#ATT-amp-CK"><span class="toc-number">1.2.</span> <span class="toc-text">ATT&amp;CK</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Reconnaissance-Tools"><span class="toc-number">2.</span> <span class="toc-text">Reconnaissance Tools</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Google-Hacking"><span class="toc-number">2.1.</span> <span class="toc-text">Google Hacking</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#DNS-related-tools"><span class="toc-number">2.2.</span> <span class="toc-text">DNS related tools</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Server-analysis-tools"><span class="toc-number">2.3.</span> <span class="toc-text">Server analysis tools</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Service-Search-engine"><span class="toc-number">2.4.</span> <span class="toc-text">Service Search engine</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Web-crawling-tools"><span class="toc-number">2.5.</span> <span class="toc-text">Web crawling tools</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Email-analysis-tools"><span class="toc-number">2.6.</span> <span class="toc-text">Email analysis tools</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Collect-info-from-social-media-tools"><span class="toc-number">2.7.</span> <span class="toc-text">Collect info. from social media tools</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Open-source-intelligence-OSINT"><span class="toc-number">2.8.</span> <span class="toc-text">Open-source intelligence (OSINT)</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Network-scan-command-line-tools"><span class="toc-number">3.</span> <span class="toc-text">Network scan command line tools</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#NMAP"><span class="toc-number">3.1.</span> <span class="toc-text">NMAP</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#HPING3"><span class="toc-number">3.2.</span> <span class="toc-text">HPING3</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#massscan"><span class="toc-number">3.3.</span> <span class="toc-text">massscan</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Host-scan"><span class="toc-number">4.</span> <span class="toc-text">Host scan</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#ARP-scan"><span class="toc-number">4.1.</span> <span class="toc-text">ARP scan</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#UDP-scan"><span class="toc-number">4.2.</span> <span class="toc-text">UDP scan</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#ICMP-scan"><span class="toc-number">4.3.</span> <span class="toc-text">ICMP scan</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#TCP-scan"><span class="toc-number">4.4.</span> <span class="toc-text">TCP scan</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#SCTP-scan"><span class="toc-number">4.5.</span> <span class="toc-text">SCTP scan</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#OS-fingerprint"><span class="toc-number">5.</span> <span class="toc-text">OS fingerprint</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#TTL%E9%95%B7%E5%BA%A6%E8%BE%AF%E8%AD%98OS"><span class="toc-number">5.1.</span> <span class="toc-text">TTL長度辯識OS</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#nmap-commands"><span class="toc-number">5.2.</span> <span class="toc-text">nmap commands</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Scan-bypass-IDS-amp-firewall"><span class="toc-number">6.</span> <span class="toc-text">Scan bypass IDS &amp; firewall</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B0%81%E5%8C%85%E5%88%86%E6%AE%B5-Packet-Fragmentation"><span class="toc-number">6.1.</span> <span class="toc-text">封包分段(Packet Fragmentation)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%80%9A%E8%A8%8A%E5%9F%A0%E4%BE%86%E6%BA%90%E4%BF%AE%E6%94%B9-Source-Port-Manipulation"><span class="toc-number">6.2.</span> <span class="toc-text">通訊埠來源修改(Source Port Manipulation)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#IP-%E4%BD%8D%E5%9D%80%E8%AA%98%E9%A4%8C-IP-Decoy"><span class="toc-number">6.3.</span> <span class="toc-text">IP 位址誘餌(IP Decoy)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#IP-%E4%BD%8D%E5%9D%80%E6%AC%BA%E9%A8%99-IP-Spoofing"><span class="toc-number">6.4.</span> <span class="toc-text">IP 位址欺騙(IP Spoofing)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BB%A3%E7%90%86%E4%BC%BA%E6%9C%8D%E5%99%A8-Proxy"><span class="toc-number">6.5.</span> <span class="toc-text">代理伺服器(Proxy)</span></a></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>Recent Post</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2023/08/16/APP%20Development/update-android-using-dfu/" title="Update the Android APP which uses nordic DFU">Update the Android APP which uses nordic DFU</a><time datetime="2023-08-16T10:10:39.000Z" title="Created 2023-08-16 18:10:39">2023-08-16</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2023/07/27/APP%20Development/development-computer/" title="工欲善其事，必先利其器 - 開發電腦及配件選擇">工欲善其事，必先利其器 - 開發電腦及配件選擇</a><time datetime="2023-07-27T06:34:41.000Z" title="Created 2023-07-27 14:34:41">2023-07-27</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2023/05/22/APP%20Development/ios-release/" title="Highlights for developers in the iOS release">Highlights for developers in the iOS release</a><time datetime="2023-05-22T01:18:37.000Z" title="Created 2023-05-22 09:18:37">2023-05-22</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2023/04/29/learning-notes/hacking-class-5-3/" title="道德駭客實務入門-4/22課程筆記-3">道德駭客實務入門-4/22課程筆記-3</a><time datetime="2023-04-29T02:53:21.000Z" title="Created 2023-04-29 10:53:21">2023-04-29</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2023/04/25/learning-notes/hacking-class-5-2/" title="道德駭客實務入門-4/22課程筆記-2">道德駭客實務入門-4/22課程筆記-2</a><time datetime="2023-04-25T03:05:58.000Z" title="Created 2023-04-25 11:05:58">2023-04-25</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2023 By Maochun</div><div class="framework-info"><span>Framework </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>Theme </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="Read Mode"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="Switch Between Light And Dark Mode"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="Toggle between single-column and double-column"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="Setting"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="Table Of Contents"><i class="fas fa-list-ul"></i></button><a id="to_comment" href="#post-comment" title="Scroll To Comments"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="Back To Top"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.umd.min.js"></script><div class="js-pjax"><script>function loadDisqus () {
+  var disqus_config = function () {
+    this.page.url = 'https://maochuns.github.io/2023/03/20/learning-notes/hacking-class-1/'
+    this.page.identifier = '/2023/03/20/learning-notes/hacking-class-1/'
+    this.page.title = '道德駭客實務入門-3/18課程筆記'
+  };
+
+  window.disqusReset = () => {
+    DISQUS.reset({
+      reload: true,
+      config: disqus_config
+    })
+  }
+
+  if (window.DISQUS) disqusReset()
+  else {
+    (function() { 
+      var d = document, s = d.createElement('script');
+      s.src = 'https://maochun-rojak-fun.disqus.com/embed.js';
+      s.setAttribute('data-timestamp', +new Date());
+      (d.head || d.body).appendChild(s);
+    })();
+  }
+
+  document.getElementById('darkmode').addEventListener('click', () => {
+    setTimeout(() => window.disqusReset(), 200)
+  })
+}
+
+if ('Disqus' === 'Disqus' || !false) {
+  if (false) btf.loadComment(document.getElementById('disqus_thread'), loadDisqus)
+  else loadDisqus()
+} else {
+  function loadOtherComment () {
+    loadDisqus()
+  }
+}
+</script></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>

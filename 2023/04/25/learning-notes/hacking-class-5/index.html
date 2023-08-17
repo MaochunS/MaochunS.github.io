@@ -1,0 +1,315 @@
+<!DOCTYPE html><html lang="en" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0"><title>道德駭客實務入門-4/22課程筆記-1 | Maochun's blog</title><meta name="author" content="Maochun"><meta name="copyright" content="Maochun"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="The class on 4&#x2F;22 introduced wireless network hacking, mobile platform hacking, IOT hacking and cloud platform hacking, and cryptography. This note is about wireless network, IOT and cloud platform ha">
+<meta property="og:type" content="article">
+<meta property="og:title" content="道德駭客實務入門-4&#x2F;22課程筆記-1">
+<meta property="og:url" content="https://maochuns.github.io/2023/04/25/learning-notes/hacking-class-5/index.html">
+<meta property="og:site_name" content="Maochun&#39;s blog">
+<meta property="og:description" content="The class on 4&#x2F;22 introduced wireless network hacking, mobile platform hacking, IOT hacking and cloud platform hacking, and cryptography. This note is about wireless network, IOT and cloud platform ha">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://maochuns.github.io/img/avatar.jpg">
+<meta property="article:published_time" content="2023-04-25T02:05:58.000Z">
+<meta property="article:modified_time" content="2023-07-01T03:56:54.850Z">
+<meta property="article:author" content="Maochun">
+<meta property="article:tag" content="Hacking">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://maochuns.github.io/img/avatar.jpg"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="https://maochuns.github.io/2023/04/25/learning-notes/hacking-class-5/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: 'Copy successfully',
+    error: 'Copy error',
+    noSupport: 'The browser does not support'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  date_suffix: {
+    just: 'Just',
+    min: 'minutes ago',
+    hour: 'hours ago',
+    day: 'days ago',
+    month: 'months ago'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  }
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '道德駭客實務入門-4/22課程筆記-1',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2023-07-01 11:56:54'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+    win.getCSS = url => new Promise((resolve, reject) => {
+      const link = document.createElement('link')
+      link.rel = 'stylesheet'
+      link.href = url
+      link.onload = () => resolve()
+      link.onerror = () => reject()
+      document.head.appendChild(link)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><meta name="generator" content="Hexo 6.3.0"></head><body><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/pace-js/themes/blue/pace-theme-minimal.min.css"/><script src="https://cdn.jsdelivr.net/npm/pace-js/pace.min.js"></script><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/img/avatar.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">Articles</div><div class="length-num">51</div></a><a href="/tags/"><div class="headline">Tags</div><div class="length-num">16</div></a><a href="/categories/"><div class="headline">Categories</div><div class="length-num">6</div></a></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> Categories</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> About</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="not-top-img" id="page-header"><nav id="nav"><span id="blog-info"><a href="/" title="Maochun's blog"><span class="site-name">Maochun's blog</span></a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> Categories</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> About</span></a></div></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav></header><main class="layout" id="content-inner"><div id="post"><div id="post-info"><h1 class="post-title">道德駭客實務入門-4/22課程筆記-1</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">Created</span><time class="post-meta-date-created" datetime="2023-04-25T02:05:58.000Z" title="Created 2023-04-25 10:05:58">2023-04-25</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">Updated</span><time class="post-meta-date-updated" datetime="2023-07-01T03:56:54.850Z" title="Updated 2023-07-01 11:56:54">2023-07-01</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/Learning-notes/">Learning notes</a></span></div><div class="meta-secondline"></div></div></div><article class="post-content" id="article-container"><p><a target="_blank" rel="noopener" href="https://www.tibame.com/offline/ceh">TibaMe: 道德駭客實務入門及CEH認證班</a><br>Teacher: 林煌錡 (Alex Lin)<br><img src="/img/hacking-class/hacking-class-info.png"></p>
+<blockquote>
+<p>The class on 4&#x2F;22 introduced wireless network hacking, mobile platform hacking, IOT hacking and cloud platform hacking, and cryptography. I separated the content into three parts. This note is about wireless network, IOT and cloud platform hacking.</p>
+</blockquote>
+<p><font style="font-size: 30px;font-weight:bold;">Part1: Hacking wireless network, IOT and cloud platform</font></p>
+<h1 id="🔸-Wireless-Network-Hacking"><a href="#🔸-Wireless-Network-Hacking" class="headerlink" title="🔸 Wireless Network Hacking"></a>🔸 Wireless Network Hacking</h1><h2 id="WEP-WPA-WPA2-amp-WPA3"><a href="#WEP-WPA-WPA2-amp-WPA3" class="headerlink" title="WEP, WPA, WPA2 &amp; WPA3"></a>WEP, WPA, WPA2 &amp; WPA3</h2><ul>
+<li><p>❌ <strong>WEP</strong> was the first security protocol developed for wireless networks. It uses a shared key to encrypt data transmitted over the wireless network. However, it has several vulnerabilities and is no longer considered secure. </p>
+</li>
+<li><p>❌ <strong>WPA</strong> was developed to address the vulnerabilities of WEP. It uses a stronger encryption algorithm called Temporal Key Integrity Protocol (TKIP) to encrypt data transmitted over the wireless network. It also provides a mechanism for authentication and key management. WPA is considered a more secure protocol than WEP, but it is still vulnerable to certain attacks.</p>
+</li>
+<li><p>✅ <strong>WPA2</strong> is an improvement over WPA and is currently the most widely used security protocol for wireless networks. It uses Advanced Encryption Standard (AES) to encrypt data transmitted over the wireless network. It also provides a more secure mechanism for authentication and key management. WPA2 is considered a strong security protocol and is recommended for securing wireless networks.</p>
+</li>
+<li><p>✅ <strong>WPA3</strong> is the latest security protocol for wireless networks. It was developed to address the vulnerabilities of WPA2 and provide even stronger security. It uses Simultaneous Authentication of Equals (SAE), a stronger key exchange protocol, to provide better protection against password-guessing attacks. It also provides improved encryption and protects against certain attacks like packet sniffing. WPA3 is considered the most secure protocol for wireless networks, but it is not yet widely adopted.</p>
+</li>
+</ul>
+<h2 id="Attacks"><a href="#Attacks" class="headerlink" title="Attacks"></a>Attacks</h2><ul>
+<li><strong>Rogue Access Point (RAP)</strong></li>
+</ul>
+<p>A Rogue Access Point (RAP) is an unauthorized wireless access point that is installed on a network without the knowledge or approval of the network administrator. RAPs are often installed by attackers or rogue employees to gain unauthorized access to a network or to eavesdrop on network traffic.</p>
+<p>A RAP can be set up in a few different ways. For example, an attacker might bring their own wireless access point and connect it to the network, or they might use a wireless-enabled device such as a laptop or smartphone to create an ad-hoc network that other devices can connect to.</p>
+<p>Once a RAP is set up, it can be used to intercept network traffic, steal sensitive information, or launch attacks against other devices on the network. RAPs can also be used to create “man-in-the-middle” attacks, where the attacker intercepts and modifies network traffic to steal data or launch additional attacks.</p>
+<p>Teacher Alex mentioned <strong>Strip SSL</strong> here.<br>SSL stripping is a type of attack where an attacker intercepts communication between a web server and a client, and downgrades the secure HTTPS connection to an insecure HTTP connection.</p>
+<ul>
+<li><strong>aLTEr(Long Term Evolution) Attack</strong></li>
+</ul>
+<p>In an aLTEr attack, the attacker first sets up a rogue base station, also known as an IMSI catcher or fake cell tower, to mimic a legitimate LTE network. The attacker can then use this fake network to intercept and modify the communication between the user’s device and the legitimate LTE network.</p>
+<p>By intercepting the user’s traffic, the attacker can steal sensitive information such as login credentials, personal data, and financial information. The attacker can also modify the user’s traffic to inject malware or perform phishing attacks.</p>
+<p>From Teacher Alex’s PPT: aLTEr attack 至少需在受害者附近架設一台將近2000美元的基地台，才有可能誘使受害者使用惡意的基地台。</p>
+<ul>
+<li><strong>Key Reinstallation Attack (KRACK)</strong></li>
+</ul>
+<p>The attack takes advantage of a weakness in the WPA2 protocol that allows an attacker to reuse a cryptographic key that has already been used before, allowing the attacker to decrypt and manipulate the traffic between the client and the network. This can allow the attacker to inject malware, steal data, or modify data.</p>
+<p>To prevent KRACK attacks, it is important to update all Wi-Fi devices to the latest firmware or software updates that fix the vulnerability. Additionally, using a Virtual Private Network (VPN) or other secure communication channel can help to protect against KRACK attacks by encrypting all network traffic. It is also important to avoid using public Wi-Fi networks for sensitive transactions, such as banking or shopping, as they are more vulnerable to KRACK attacks.</p>
+<ul>
+<li><p><strong>Jamming Signal Attacks</strong></p>
+</li>
+<li><p><strong>Denial-of-Service Attack</strong></p>
+</li>
+<li><p><strong>Wormhole Attack</strong></p>
+</li>
+<li><p><strong>Sinkhole Attack</strong></p>
+</li>
+</ul>
+<h2 id="Tools"><a href="#Tools" class="headerlink" title="Tools"></a>Tools</h2><h3 id="WiGLE"><a href="#WiGLE" class="headerlink" title="WiGLE"></a>WiGLE</h3><p>WiGLE (or Wireless Geographic Logging Engine) is a website for collecting information about the different wireless hotspots around the world.<br>Wiki: <a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/WiGLE">https://en.wikipedia.org/wiki/WiGLE</a><br><a target="_blank" rel="noopener" href="https://wigle.net/">https://wigle.net</a></p>
+<h3 id="Tools-provided-in-Kali-Linux"><a href="#Tools-provided-in-Kali-Linux" class="headerlink" title="Tools provided in Kali Linux."></a>Tools provided in Kali Linux.</h3><ul>
+<li>Fern Wifi Cracker</li>
+<li>Kismet</li>
+<li>GISKismet</li>
+<li>Ghost Phisher</li>
+<li>Wifite</li>
+</ul>
+<h1 id="🔸-IOT-Hacking"><a href="#🔸-IOT-Hacking" class="headerlink" title="🔸 IOT Hacking"></a>🔸 IOT Hacking</h1><h2 id="IoT-OWASP-Top10"><a href="#IoT-OWASP-Top10" class="headerlink" title="IoT OWASP Top10"></a>IoT OWASP Top10</h2><p><a target="_blank" rel="noopener" href="https://wiki.owasp.org/index.php/OWASP_Internet_of_Things_Project#tab=IoT_Top_10">https://wiki.owasp.org/index.php/OWASP_Internet_of_Things_Project#tab=IoT_Top_10</a><br><img src="/img/hacking-class/iot-owasp10.png"></p>
+<h2 id="Tools-1"><a href="#Tools-1" class="headerlink" title="Tools"></a>Tools</h2><ul>
+<li><strong>fireware-mod-kit</strong><br>From Teacher Alex’s PPT:<br><img src="/img/hacking-class/fw-mod-kit.png"><br>Kali provides buildin fireware-mod-kit.</li>
+</ul>
+<h2 id="Prevention"><a href="#Prevention" class="headerlink" title="Prevention"></a>Prevention</h2><ul>
+<li>Keep FW up-to-date</li>
+<li>Close necessary ports</li>
+<li>DO NOT use telnet</li>
+<li>Use encryption protocols such as SSL&#x2F;TLS</li>
+<li>Enhance password strength</li>
+<li>Encrypt FW</li>
+<li>DO NOT use UPnP</li>
+</ul>
+<h1 id="🔸-Cloud-Platform-Hacking"><a href="#🔸-Cloud-Platform-Hacking" class="headerlink" title="🔸 Cloud Platform Hacking"></a>🔸 Cloud Platform Hacking</h1><h2 id="OWASP-Cloud-Risk-Top-10"><a href="#OWASP-Cloud-Risk-Top-10" class="headerlink" title="OWASP Cloud Risk Top 10"></a>OWASP Cloud Risk Top 10</h2><p>From OWASP: <a target="_blank" rel="noopener" href="https://owasp.org/www-pdf-archive/Cloud-Top10-Security-Risks.pdf">https://owasp.org/www-pdf-archive/Cloud-Top10-Security-Risks.pdf</a><br><img src="/img/hacking-class/cloud-risk-top10.png"></p>
+<h2 id="OWASP-Cloud-Native-Application-Security-Top-10"><a href="#OWASP-Cloud-Native-Application-Security-Top-10" class="headerlink" title="OWASP Cloud-Native Application Security Top 10"></a>OWASP Cloud-Native Application Security Top 10</h2><p>From OWASP: <a target="_blank" rel="noopener" href="https://owasp.org/www-project-cloud-native-application-security-top-10/">https://owasp.org/www-project-cloud-native-application-security-top-10/</a></p>
+<h2 id="Container-Vulnerabilities"><a href="#Container-Vulnerabilities" class="headerlink" title="Container Vulnerabilities"></a>Container Vulnerabilities</h2><p>From Teacher Alex’s PPT:</p>
+<ul>
+<li>Impetuous Image Creation(未審視的映像檔)</li>
+<li>Unreliable Third-Party Resources(不可靠的第三方資源)</li>
+<li>Unauthorized Access(未經授權的存取)</li>
+<li>Insecure Container Runtime Configurations (不安全的容器設定檔)</li>
+<li>Data Exposure in Docker Files(Docker中的檔案遭暴露)</li>
+<li>Embedded Malware(嵌入式的惡意程式)</li>
+<li>Non-Updated Images(未更新的映像檔)</li>
+<li>Hijacked Repository and Infected Resoreces (受劫持的映象檔儲存庫和資源)</li>
+<li>Hijacked Image Registry (受劫持的映像註冊表)</li>
+<li>Exposed Service due to open port (開放的服務Port)</li>
+<li>Exploited Applications (利用應用程式的弱點)</li>
+<li>Mixing of Workload(混合再一起的應用容器)</li>
+<li>Mixing of Workload Sensitivity Levels (敏感級別的容器和一般容器混合)</li>
+</ul>
+<h2 id="Security-Settings"><a href="#Security-Settings" class="headerlink" title="Security Settings"></a>Security Settings</h2><h3 id="Container"><a href="#Container" class="headerlink" title="Container"></a>Container</h3><p>From Teacher Alex’s PPT:</p>
+<ul>
+<li>設定分配給容器的資源</li>
+<li>Container 不應該以root執行</li>
+<li>挑選驗證過的Repo</li>
+<li>映像檔原始碼審查</li>
+<li>關閉不必要的容器的網路服務</li>
+</ul>
+<h3 id="Bucket"><a href="#Bucket" class="headerlink" title="Bucket"></a>Bucket</h3><p>Teacher Alex mentioned that we must be careful with the S3 Identity and Access Management (IAM).<br>From Teacher Alex’s PPT:<br>若和 Bucket 連動 APP 具有 SSRF 的弱點，則可以嘗試枚舉執行個體中繼資料和使用者資料.</p>
+<p>Can use duckduckgo.com to search s3 buckets via <code>site:s3.amazonaws.com</code></p>
+<p>Case study: Unrestricted File Upload at Apple.com<br><a target="_blank" rel="noopener" href="https://medium.com/@jonathanbouman/how-i-hacked-apple-com-unrestricted-file-upload-bcda047e27e3">https://medium.com/@jonathanbouman/how-i-hacked-apple-com-unrestricted-file-upload-bcda047e27e3</a></p>
+<h3 id="Kubernetes"><a href="#Kubernetes" class="headerlink" title="Kubernetes"></a>Kubernetes</h3><p>From Teacher Alex’s PPT:</p>
+<ul>
+<li>關閉公開存取</li>
+<li>實施存取權控管</li>
+<li>加密 Kubernetes 金鑰</li>
+<li>設定 Kubernetes 的存取控制器</li>
+<li>設定 Kubernetes 的網路政策</li>
+<li>設定容器的資安規則</li>
+<li>分離敏感的工作負載</li>
+<li>掃描容器映像</li>
+<li>稽核日誌</li>
+<li>更新最新的 Kubernetes版本</li>
+</ul>
+<h3 id="Kubernetes-master"><a href="#Kubernetes-master" class="headerlink" title="Kubernetes master"></a>Kubernetes master</h3><p>The Kubernetes master node is a critical component of a Kubernetes cluster, and it contains sensitive information about the configuration and operation of the cluster. Therefore, if a hacker gains access to the Kubernetes master node, they could potentially take control of the entire cluster and access or manipulate data and resources.</p>
+<p>Can use Shodan to find Kubernetes masters.</p>
+<h2 id="Tools-2"><a href="#Tools-2" class="headerlink" title="Tools"></a>Tools</h2><ul>
+<li><p><strong>Trivy (Open source)</strong><br><a target="_blank" rel="noopener" href="https://github.com/aquasecurity/trivy">https://github.com/aquasecurity/trivy</a><br>From trivy github:<br><img src="/img/hacking-class/trivy.png"></p>
+</li>
+<li><p><strong>Sysdig (Paid tool)</strong><br><a target="_blank" rel="noopener" href="https://sysdig.com/">https://sysdig.com</a><br>From Teacher Alex’s PPT: 針對大量部屬的容器、Image、Kubernets Contoller 等安全性掃描</p>
+</li>
+<li><p><strong>Nimbostratus (Open source)</strong><br><a target="_blank" rel="noopener" href="https://github.com/andresriancho/nimbostratus">https://github.com/andresriancho/nimbostratus</a><br>Same author who also created w3af: <a target="_blank" rel="noopener" href="https://github.com/andresriancho/w3af">https://github.com/andresriancho/w3af</a></p>
+</li>
+<li><p><strong>s3-inspector (Open source)</strong><br>Check AWS S3 bucket permissions.<br><a target="_blank" rel="noopener" href="https://github.com/clario-tech/s3-inspector">https://github.com/clario-tech/s3-inspector</a></p>
+</li>
+<li><p><strong>Kube-hunter (Open source)</strong><br>Check security weaknesses in Kubernetes clusters.<br><a target="_blank" rel="noopener" href="https://github.com/aquasecurity/kube-hunter">https://github.com/aquasecurity/kube-hunter</a></p>
+</li>
+</ul>
+</article><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/Hacking/">Hacking</a></div><div class="post_share"></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2023/04/25/learning-notes/hacking-class-5-2/" title="道德駭客實務入門-4/22課程筆記-2"><div class="cover" style="background: var(--default-bg-color)"></div><div class="pagination-info"><div class="label">Previous Post</div><div class="prev_info">道德駭客實務入門-4/22課程筆記-2</div></div></a></div><div class="next-post pull-right"><a href="/2023/04/17/learning-notes/hacking-class-4/" title="道德駭客實務入門-4/15課程筆記"><div class="cover" style="background: var(--default-bg-color)"></div><div class="pagination-info"><div class="label">Next Post</div><div class="next_info">道德駭客實務入門-4/15課程筆記</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>Related Articles</span></div><div class="relatedPosts-list"><div><a href="/2023/03/20/learning-notes/hacking-class-0/" title="道德駭客實務入門-課前準備"><div class="cover" style="background: var(--default-bg-color)"></div><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-03-20</div><div class="title">道德駭客實務入門-課前準備</div></div></a></div><div><a href="/2023/03/27/learning-notes/hacking-class-2/" title="道德駭客實務入門-3&#x2F;26課程筆記"><div class="cover" style="background: var(--default-bg-color)"></div><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-03-27</div><div class="title">道德駭客實務入門-3&#x2F;26課程筆記</div></div></a></div><div><a href="/2023/03/20/learning-notes/hacking-class-1/" title="道德駭客實務入門-3&#x2F;18課程筆記"><div class="cover" style="background: var(--default-bg-color)"></div><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-03-20</div><div class="title">道德駭客實務入門-3&#x2F;18課程筆記</div></div></a></div><div><a href="/2023/04/10/learning-notes/hacking-class-3-2/" title="道德駭客實務入門-4&#x2F;8課程筆記-2"><div class="cover" style="background: var(--default-bg-color)"></div><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-04-10</div><div class="title">道德駭客實務入門-4&#x2F;8課程筆記-2</div></div></a></div><div><a href="/2023/04/10/learning-notes/hacking-class-3-3/" title="道德駭客實務入門-4&#x2F;8課程筆記-3"><div class="cover" style="background: var(--default-bg-color)"></div><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-04-10</div><div class="title">道德駭客實務入門-4&#x2F;8課程筆記-3</div></div></a></div><div><a href="/2023/04/10/learning-notes/hacking-class-3/" title="道德駭客實務入門-4&#x2F;8課程筆記-1"><div class="cover" style="background: var(--default-bg-color)"></div><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-04-10</div><div class="title">道德駭客實務入門-4&#x2F;8課程筆記-1</div></div></a></div></div></div><hr/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> Comment</span></div></div><div class="comment-wrap"><div><div id="disqus_thread"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="/img/avatar.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">Maochun</div><div class="author-info__description">對酒當歌，人生幾何</div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">Articles</div><div class="length-num">51</div></a><a href="/tags/"><div class="headline">Tags</div><div class="length-num">16</div></a><a href="/categories/"><div class="headline">Categories</div><div class="length-num">6</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/MaochunS"><i class="fab fa-github"></i><span>My Github</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="mailto:m20211222@gmail.com" target="_blank" title="Email"><i class="fas fa-envelope"></i></a><a class="social-icon" href="https://www.linkedin.com/in/maochun-s-4318b11ba" target="_blank" title="LinkedIn"><i class="fab fa-linkedin"></i></a></div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>Catalog</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%F0%9F%94%B8-Wireless-Network-Hacking"><span class="toc-number">1.</span> <span class="toc-text">🔸 Wireless Network Hacking</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#WEP-WPA-WPA2-amp-WPA3"><span class="toc-number">1.1.</span> <span class="toc-text">WEP, WPA, WPA2 &amp; WPA3</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Attacks"><span class="toc-number">1.2.</span> <span class="toc-text">Attacks</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Tools"><span class="toc-number">1.3.</span> <span class="toc-text">Tools</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#WiGLE"><span class="toc-number">1.3.1.</span> <span class="toc-text">WiGLE</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Tools-provided-in-Kali-Linux"><span class="toc-number">1.3.2.</span> <span class="toc-text">Tools provided in Kali Linux.</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%F0%9F%94%B8-IOT-Hacking"><span class="toc-number">2.</span> <span class="toc-text">🔸 IOT Hacking</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#IoT-OWASP-Top10"><span class="toc-number">2.1.</span> <span class="toc-text">IoT OWASP Top10</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Tools-1"><span class="toc-number">2.2.</span> <span class="toc-text">Tools</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Prevention"><span class="toc-number">2.3.</span> <span class="toc-text">Prevention</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%F0%9F%94%B8-Cloud-Platform-Hacking"><span class="toc-number">3.</span> <span class="toc-text">🔸 Cloud Platform Hacking</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#OWASP-Cloud-Risk-Top-10"><span class="toc-number">3.1.</span> <span class="toc-text">OWASP Cloud Risk Top 10</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#OWASP-Cloud-Native-Application-Security-Top-10"><span class="toc-number">3.2.</span> <span class="toc-text">OWASP Cloud-Native Application Security Top 10</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Container-Vulnerabilities"><span class="toc-number">3.3.</span> <span class="toc-text">Container Vulnerabilities</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Security-Settings"><span class="toc-number">3.4.</span> <span class="toc-text">Security Settings</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Container"><span class="toc-number">3.4.1.</span> <span class="toc-text">Container</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Bucket"><span class="toc-number">3.4.2.</span> <span class="toc-text">Bucket</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Kubernetes"><span class="toc-number">3.4.3.</span> <span class="toc-text">Kubernetes</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Kubernetes-master"><span class="toc-number">3.4.4.</span> <span class="toc-text">Kubernetes master</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Tools-2"><span class="toc-number">3.5.</span> <span class="toc-text">Tools</span></a></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>Recent Post</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2023/08/16/APP%20Development/update-android-using-dfu/" title="Update the Android APP which uses nordic DFU">Update the Android APP which uses nordic DFU</a><time datetime="2023-08-16T10:10:39.000Z" title="Created 2023-08-16 18:10:39">2023-08-16</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2023/07/27/APP%20Development/development-computer/" title="工欲善其事，必先利其器 - 開發電腦及配件選擇">工欲善其事，必先利其器 - 開發電腦及配件選擇</a><time datetime="2023-07-27T06:34:41.000Z" title="Created 2023-07-27 14:34:41">2023-07-27</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2023/05/22/APP%20Development/ios-release/" title="Highlights for developers in the iOS release">Highlights for developers in the iOS release</a><time datetime="2023-05-22T01:18:37.000Z" title="Created 2023-05-22 09:18:37">2023-05-22</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2023/04/29/learning-notes/hacking-class-5-3/" title="道德駭客實務入門-4/22課程筆記-3">道德駭客實務入門-4/22課程筆記-3</a><time datetime="2023-04-29T02:53:21.000Z" title="Created 2023-04-29 10:53:21">2023-04-29</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2023/04/25/learning-notes/hacking-class-5-2/" title="道德駭客實務入門-4/22課程筆記-2">道德駭客實務入門-4/22課程筆記-2</a><time datetime="2023-04-25T03:05:58.000Z" title="Created 2023-04-25 11:05:58">2023-04-25</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2023 By Maochun</div><div class="framework-info"><span>Framework </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>Theme </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="Read Mode"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="Switch Between Light And Dark Mode"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="Toggle between single-column and double-column"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="Setting"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="Table Of Contents"><i class="fas fa-list-ul"></i></button><a id="to_comment" href="#post-comment" title="Scroll To Comments"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="Back To Top"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.umd.min.js"></script><div class="js-pjax"><script>function loadDisqus () {
+  var disqus_config = function () {
+    this.page.url = 'https://maochuns.github.io/2023/04/25/learning-notes/hacking-class-5/'
+    this.page.identifier = '/2023/04/25/learning-notes/hacking-class-5/'
+    this.page.title = '道德駭客實務入門-4/22課程筆記-1'
+  };
+
+  window.disqusReset = () => {
+    DISQUS.reset({
+      reload: true,
+      config: disqus_config
+    })
+  }
+
+  if (window.DISQUS) disqusReset()
+  else {
+    (function() { 
+      var d = document, s = d.createElement('script');
+      s.src = 'https://maochun-rojak-fun.disqus.com/embed.js';
+      s.setAttribute('data-timestamp', +new Date());
+      (d.head || d.body).appendChild(s);
+    })();
+  }
+
+  document.getElementById('darkmode').addEventListener('click', () => {
+    setTimeout(() => window.disqusReset(), 200)
+  })
+}
+
+if ('Disqus' === 'Disqus' || !false) {
+  if (false) btf.loadComment(document.getElementById('disqus_thread'), loadDisqus)
+  else loadDisqus()
+} else {
+  function loadOtherComment () {
+    loadDisqus()
+  }
+}
+</script></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>

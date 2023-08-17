@@ -1,0 +1,246 @@
+<!DOCTYPE html><html lang="en" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0"><title>道德駭客實務入門-4/8課程筆記-1 | Maochun's blog</title><meta name="author" content="Maochun"><meta name="copyright" content="Maochun"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="The class on 4&#x2F;8 introduced web server hacking, web application hacking and database injection. I separated the content into three parts. This note is about web server hacking.">
+<meta property="og:type" content="article">
+<meta property="og:title" content="道德駭客實務入門-4&#x2F;8課程筆記-1">
+<meta property="og:url" content="https://maochuns.github.io/2023/04/10/learning-notes/hacking-class-3/index.html">
+<meta property="og:site_name" content="Maochun&#39;s blog">
+<meta property="og:description" content="The class on 4&#x2F;8 introduced web server hacking, web application hacking and database injection. I separated the content into three parts. This note is about web server hacking.">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://maochuns.github.io/img/avatar.jpg">
+<meta property="article:published_time" content="2023-04-10T02:57:51.000Z">
+<meta property="article:modified_time" content="2023-07-01T03:56:54.850Z">
+<meta property="article:author" content="Maochun">
+<meta property="article:tag" content="Hacking">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://maochuns.github.io/img/avatar.jpg"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="https://maochuns.github.io/2023/04/10/learning-notes/hacking-class-3/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: 'Copy successfully',
+    error: 'Copy error',
+    noSupport: 'The browser does not support'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  date_suffix: {
+    just: 'Just',
+    min: 'minutes ago',
+    hour: 'hours ago',
+    day: 'days ago',
+    month: 'months ago'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  }
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '道德駭客實務入門-4/8課程筆記-1',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2023-07-01 11:56:54'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+    win.getCSS = url => new Promise((resolve, reject) => {
+      const link = document.createElement('link')
+      link.rel = 'stylesheet'
+      link.href = url
+      link.onload = () => resolve()
+      link.onerror = () => reject()
+      document.head.appendChild(link)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><meta name="generator" content="Hexo 6.3.0"></head><body><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/pace-js/themes/blue/pace-theme-minimal.min.css"/><script src="https://cdn.jsdelivr.net/npm/pace-js/pace.min.js"></script><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/img/avatar.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">Articles</div><div class="length-num">51</div></a><a href="/tags/"><div class="headline">Tags</div><div class="length-num">16</div></a><a href="/categories/"><div class="headline">Categories</div><div class="length-num">6</div></a></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> Categories</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> About</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="not-top-img" id="page-header"><nav id="nav"><span id="blog-info"><a href="/" title="Maochun's blog"><span class="site-name">Maochun's blog</span></a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> Categories</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> About</span></a></div></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav></header><main class="layout" id="content-inner"><div id="post"><div id="post-info"><h1 class="post-title">道德駭客實務入門-4/8課程筆記-1</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">Created</span><time class="post-meta-date-created" datetime="2023-04-10T02:57:51.000Z" title="Created 2023-04-10 10:57:51">2023-04-10</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">Updated</span><time class="post-meta-date-updated" datetime="2023-07-01T03:56:54.850Z" title="Updated 2023-07-01 11:56:54">2023-07-01</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/Learning-notes/">Learning notes</a></span></div><div class="meta-secondline"></div></div></div><article class="post-content" id="article-container"><p><a target="_blank" rel="noopener" href="https://www.tibame.com/offline/ceh">TibaMe: 道德駭客實務入門及CEH認證班</a><br>Teacher: 林煌錡 (Alex Lin)<br><img src="/img/hacking-class/hacking-class-info.png"></p>
+<blockquote>
+<p>The class on 4&#x2F;8 introduced web server hacking, web application hacking and database injection. I separated the content into three parts. This note is about web server hacking.</p>
+</blockquote>
+<p><font style="font-size: 28px;font-weight:bold;">Part1: Web server hacking</font></p>
+<h2 id="Web-server"><a href="#Web-server" class="headerlink" title="Web server"></a>Web server</h2><p>常用的Web server有：IIS, Apache, Apache Tomcat, NginX<br>駭客要駭入Web server前要先收集Server的資訊，如果知道Web server是用哪種，就可以針對這種Web Server找尋相應的漏洞，有的放矢。<br>所以作為開發者，應該盡量隱藏Server資訊。</p>
+<h2 id="Invalid-Web-Server-Settings"><a href="#Invalid-Web-Server-Settings" class="headerlink" title="Invalid Web Server Settings"></a>Invalid Web Server Settings</h2><p>設定不當就有可能引狼入室。</p>
+<h3 id="🔸-Unlimited-uri-access-control"><a href="#🔸-Unlimited-uri-access-control" class="headerlink" title="🔸 Unlimited uri access control"></a>🔸 Unlimited uri access control</h3><p>資源uri列表：<a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/List_of_URI_schemes">https://en.wikipedia.org/wiki/List_of_URI_schemes</a><br>因爲資源uri是公開定義的，如果Server對資源存取不加以限制的話，就很容易被竊取資料。</p>
+<h3 id="🔸-Unnecessary-services"><a href="#🔸-Unnecessary-services" class="headerlink" title="🔸 Unnecessary services"></a>🔸 Unnecessary services</h3><p>不必要的service不要開，開了多餘的service就是找自己麻煩，給駭客可乘之機。<br>For example, service like remote desktop connection should not be enabled in a production server.</p>
+<h3 id="🔸-Use-default-account-amp-password"><a href="#🔸-Use-default-account-amp-password" class="headerlink" title="🔸 Use default account &amp; password"></a>🔸 Use default account &amp; password</h3><p>Never ever use the default username &amp; password in a production server.<br>For example, google “tomcat default username and password” and you will get the info. below.<br><img src="/img/hacking-class/google-default-acc.png"></p>
+<!-- <p style="align: left"><img src="/img/hacking-class/google-default-acc.png"  width="50%"></p> -->
+<p>And you can find more in github.<br><a target="_blank" rel="noopener" href="https://github.com/netbiosX/Default-Credentials/blob/master/Apache-Tomcat-Default-Passwords.mdown">https://github.com/netbiosX/Default-Credentials/blob/master/Apache-Tomcat-Default-Passwords.mdown</a></p>
+<h3 id="🔸-Redundant-files"><a href="#🔸-Redundant-files" class="headerlink" title="🔸 Redundant files"></a>🔸 Redundant files</h3><p>多餘的檔案不要放，不然 your trash is someone’s treasure.</p>
+<h3 id="🔸-Debug-mode"><a href="#🔸-Debug-mode" class="headerlink" title="🔸 Debug mode"></a>🔸 Debug mode</h3><p>Production server should disable the debug mode.</p>
+<h3 id="🔸-Unlimited-file-access-rights"><a href="#🔸-Unlimited-file-access-rights" class="headerlink" title="🔸 Unlimited file access rights"></a>🔸 Unlimited file access rights</h3><p>Web server要限定可以看到的副檔名。</p>
+<h3 id="🔸-Web-server-vulnerabilities"><a href="#🔸-Web-server-vulnerabilities" class="headerlink" title="🔸 Web server vulnerabilities"></a>🔸 Web server vulnerabilities</h3><p>架構本身存在漏洞，比如老師提到 <a target="_blank" rel="noopener" href="https://zh.wikipedia.org/zh-tw/Struts">STRUTS</a>是一款Apache中常用的CMS，但 STRUTS 漏洞實在太多，很容易被攻擊。  </p>
+<h2 id="駭客常用手法"><a href="#駭客常用手法" class="headerlink" title="駭客常用手法"></a>駭客常用手法</h2><h3 id="🔸-CRLF"><a href="#🔸-CRLF" class="headerlink" title="🔸 CRLF"></a>🔸 CRLF</h3><ul>
+<li>CR: Carriage-Return, URL hex: %0d</li>
+<li>LF: Line-Feed, URL hex: %0a</li>
+<li>HTTP header injection: 利用這兩個特殊符號注入url實現跳轉。 這就可以用正常網域做一個惡意鏈接。</li>
+<li>還有 HTTP Response CRLF injection 和 Mail Header CRLF injection。</li>
+<li>防禦方法 from <a target="_blank" rel="noopener" href="https://www.acunetix.com/websitesecurity/crlf-injection/">acunetix.com</a>。這個攻擊相對來說比較好防。<br><img src="/img/hacking-class/prevent-crlf.png"></li>
+<li>References<br><a target="_blank" rel="noopener" href="https://owasp.org/www-community/vulnerabilities/CRLF_Injection">https://owasp.org/www-community/vulnerabilities/CRLF_Injection</a><br><a target="_blank" rel="noopener" href="https://www.acunetix.com/websitesecurity/crlf-injection/">https://www.acunetix.com/websitesecurity/crlf-injection/</a><br><a target="_blank" rel="noopener" href="https://book.hacktricks.xyz/pentesting-web/crlf-0d-0a">https://book.hacktricks.xyz/pentesting-web/crlf-0d-0a</a><br><a target="_blank" rel="noopener" href="https://cloud.tencent.com/developer/article/1728657">https://cloud.tencent.com/developer/article/1728657</a></li>
+</ul>
+<h3 id="🔸-Web-Cache-Deception-網頁快取攻擊"><a href="#🔸-Web-Cache-Deception-網頁快取攻擊" class="headerlink" title="🔸 Web Cache Deception (網頁快取攻擊)"></a>🔸 Web Cache Deception (網頁快取攻擊)</h3><p>網頁快取是ㄧ種用cache來減少伺服器延遲的常用作法。 網頁快取常常存放在靜態網頁中，e.g. html, png, css… Server對這些靜態網檔案管控通常不嚴，如果快取檔案中有帳密訊息就很容易被竊取。</p>
+<p>案例：ChatGPT的WCD漏洞。<br>駭客發現ChatGPT會用網頁快取來存放使用者的authentication data而且沒有讀取限制，於是製造一個link: <a target="_blank" rel="noopener" href="https://chat.openai.com/api/auth/session/demo.css">https://chat.openai.com/api/auth/session/demo.css</a> 寄給受害者，這裡demo.css可以是任意名稱，受害者看到ChatGPT的域名通常不疑有他，點開後會看到自己的authentication data可能也沒什麼感覺， 但殊不知駭客也可以用同一個link得到受害者所有authentication data，並且可以用這些authentication data來登入帳戶。這個漏洞已被ChatGPT修補完成，大家可以放心點開demo link.</p>
+<p>Find more details regarding the ChatGPT’s WCD in the link below. And you can google “ChatGPT account takeover” for more information.<br><a target="_blank" rel="noopener" href="https://medium.com/@diegotellaroli05/account-takeover-in-chatgpt-e134ed11654d">https://medium.com/@diegotellaroli05/account-takeover-in-chatgpt-e134ed11654d</a><br><a target="_blank" rel="noopener" href="https://www.ithome.com.tw/news/156205">https://www.ithome.com.tw/news/156205</a></p>
+<h3 id="🔸-Server-Side-Request-Forgery-SSRF-伺服器端請求偽造"><a href="#🔸-Server-Side-Request-Forgery-SSRF-伺服器端請求偽造" class="headerlink" title="🔸 Server-Side Request Forgery (SSRF) (伺服器端請求偽造)"></a>🔸 Server-Side Request Forgery (SSRF) (伺服器端請求偽造)</h3><p>SSRF大全: <a target="_blank" rel="noopener" href="https://github.com/jdonsec/AllThingsSSRF">https://github.com/jdonsec/AllThingsSSRF</a><br>要練習SSRF攻擊的話，可以參考 <a target="_blank" rel="noopener" href="https://github.com/m6a-UdS/dvca">https://github.com/m6a-UdS/dvca</a> 架一個環境。</p>
+<p>SSRF攻擊種類繁多</p>
+<ul>
+<li><p>課堂練習1<br>利用 file:&#x2F;&#x2F;[host]&#x2F;path 非法存取server端的檔案</p>
+</li>
+<li><p>課堂練習2<br>更改 url path 繞過驗證<br>靶機 url: 172.16.25.25:8088， 改成 172.16.25.25:8088&#x2F;jkstatus; 直接繞過驗證。<br><a target="_blank" rel="noopener" href="https://www.immunit.ch/blog/2018/11/01/cve-2018-11759-apache-mod_jk-access-bypass/">https://www.immunit.ch/blog/2018/11/01/cve-2018-11759-apache-mod_jk-access-bypass/</a><br><a target="_blank" rel="noopener" href="https://ithelp.ithome.com.tw/articles/10242449">https://ithelp.ithome.com.tw/articles/10242449</a></p>
+</li>
+<li><p>我找到的 SSRF sample<br>看完Jayden這篇”項莊舞劍-意在沛公”，讓我覺的如果Server RESTful APIs沒有JWT token的保護實在太危險，我對自己的Server好焦慮。<br>推薦Jayden的blog程式猿吃香蕉 <a target="_blank" rel="noopener" href="https://medium.com/@jaydenlin">https://medium.com/@jaydenlin</a> ，有很多資安相關文章。<br><a target="_blank" rel="noopener" href="https://medium.com/%E7%A8%8B%E5%BC%8F%E7%8C%BF%E5%90%83%E9%A6%99%E8%95%89/%E7%B6%B2%E7%AB%99%E5%AE%89%E5%85%A8-%E4%BC%BA%E6%9C%8D%E5%99%A8%E8%AB%8B%E6%B1%82%E5%81%BD%E9%80%A0-ssrf-%E6%94%BB%E6%93%8A-%E9%A0%85%E8%8E%8A%E8%88%9E%E5%8A%8D-%E6%84%8F%E5%9C%A8%E6%B2%9B%E5%85%AC-7a5524926362">https://medium.com/程式猿吃香蕉/網站安全-伺服器請求偽造-ssrf-攻擊-項莊舞劍-意在沛公-7a5524926362</a></p>
+</li>
+</ul>
+<h3 id="🔸-Cross-Site-Request-Forgery-CSRF"><a href="#🔸-Cross-Site-Request-Forgery-CSRF" class="headerlink" title="🔸 Cross-Site Request Forgery (CSRF)"></a>🔸 Cross-Site Request Forgery (CSRF)</h3><p>Difference between SSRF &amp; CSRF from ChatGPT:</p>
+<blockquote>
+<p>In summary, while SSRF involves exploiting a server-side vulnerability to make unauthorized requests, CSRF involves exploiting a client-side vulnerability to trick the user into making unauthorized requests.</p>
+</blockquote>
+<p>推薦閱讀：<a target="_blank" rel="noopener" href="https://blog.techbridge.cc/2017/02/25/csrf-introduction/">https://blog.techbridge.cc/2017/02/25/csrf-introduction/</a></p>
+<h2 id="常用工具"><a href="#常用工具" class="headerlink" title="常用工具"></a>常用工具</h2><p>工具本身沒有善惡之分，駭客手裡就是尋找漏洞駭入系統的利劍，資安手裡就是修補防護的盾牌。<br>之後有時間試用的話再補充心得。</p>
+<h3 id="🔸-owasp-zap"><a href="#🔸-owasp-zap" class="headerlink" title="🔸 owasp-zap"></a>🔸 owasp-zap</h3><p>網頁漏洞掃瞄工具。<br><a target="_blank" rel="noopener" href="https://www.zaproxy.org/">https://www.zaproxy.org</a></p>
+<h3 id="🔸-Openvas"><a href="#🔸-Openvas" class="headerlink" title="🔸 Openvas"></a>🔸 Openvas</h3><p>主機漏洞掃瞄工具。<br><a target="_blank" rel="noopener" href="https://www.openvas.org/">https://www.openvas.org</a></p>
+<h3 id="🔸-Burpsuite-Pro"><a href="#🔸-Burpsuite-Pro" class="headerlink" title="🔸 Burpsuite Pro"></a>🔸 Burpsuite Pro</h3><p>老師提到這個工具可以用來http封包攔截重送。<br><a target="_blank" rel="noopener" href="https://zh.wikipedia.org/zh-tw/Burp_suite">https://zh.wikipedia.org/zh-tw/Burp_suite</a><br><a target="_blank" rel="noopener" href="https://portswigger.net/burp/pro">https://portswigger.net/burp/pro</a></p>
+<h3 id="🔸-Acunetix-付費工具"><a href="#🔸-Acunetix-付費工具" class="headerlink" title="🔸 Acunetix (付費工具)"></a>🔸 Acunetix (付費工具)</h3><p>網頁漏洞掃瞄工具。<br><a target="_blank" rel="noopener" href="https://www.acunetix.com/">https://www.acunetix.com</a></p>
+<h3 id="🔸-Nessus"><a href="#🔸-Nessus" class="headerlink" title="🔸 Nessus"></a>🔸 Nessus</h3><p>非常有名的漏洞掃瞄工具。<br><a target="_blank" rel="noopener" href="https://www.tenable.com/products/nessus">https://www.tenable.com/products/nessus</a><br>價格有點高。<br><img src="/img/hacking-class/nessus-price.png"></p>
+<h3 id="🔸-Nikto"><a href="#🔸-Nikto" class="headerlink" title="🔸 Nikto"></a>🔸 Nikto</h3><p>Kali內建掃瞄工具。<br><a target="_blank" rel="noopener" href="https://www.kali.org/tools/nikto/">https://www.kali.org/tools/nikto/</a></p>
+<h2 id="防禦方法"><a href="#防禦方法" class="headerlink" title="防禦方法"></a>防禦方法</h2><p>駭客手法千變萬化，駭客工具層出不窮。對於防守方而言，當然要不斷加固自己的堤防。道高一尺，魔高ㄧ丈，相信這是一場永無止境的攻防之戰。</p>
+<p>The image below is from Teacher <strong>Alex Lin</strong>‘s class PPT<br><img src="/img/hacking-class/countermeasure.png"></p>
+</article><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/Hacking/">Hacking</a></div><div class="post_share"></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2023/04/10/learning-notes/hacking-class-3-2/" title="道德駭客實務入門-4/8課程筆記-2"><div class="cover" style="background: var(--default-bg-color)"></div><div class="pagination-info"><div class="label">Previous Post</div><div class="prev_info">道德駭客實務入門-4/8課程筆記-2</div></div></a></div><div class="next-post pull-right"><a href="/2023/04/09/APP%20Development/fix-errors-in-xcode-14/" title="Fix build &amp; archive errors in XCode 14.3"><div class="cover" style="background: var(--default-bg-color)"></div><div class="pagination-info"><div class="label">Next Post</div><div class="next_info">Fix build &amp; archive errors in XCode 14.3</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>Related Articles</span></div><div class="relatedPosts-list"><div><a href="/2023/03/20/learning-notes/hacking-class-0/" title="道德駭客實務入門-課前準備"><div class="cover" style="background: var(--default-bg-color)"></div><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-03-20</div><div class="title">道德駭客實務入門-課前準備</div></div></a></div><div><a href="/2023/03/27/learning-notes/hacking-class-2/" title="道德駭客實務入門-3&#x2F;26課程筆記"><div class="cover" style="background: var(--default-bg-color)"></div><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-03-27</div><div class="title">道德駭客實務入門-3&#x2F;26課程筆記</div></div></a></div><div><a href="/2023/03/20/learning-notes/hacking-class-1/" title="道德駭客實務入門-3&#x2F;18課程筆記"><div class="cover" style="background: var(--default-bg-color)"></div><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-03-20</div><div class="title">道德駭客實務入門-3&#x2F;18課程筆記</div></div></a></div><div><a href="/2023/04/10/learning-notes/hacking-class-3-2/" title="道德駭客實務入門-4&#x2F;8課程筆記-2"><div class="cover" style="background: var(--default-bg-color)"></div><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-04-10</div><div class="title">道德駭客實務入門-4&#x2F;8課程筆記-2</div></div></a></div><div><a href="/2023/04/10/learning-notes/hacking-class-3-3/" title="道德駭客實務入門-4&#x2F;8課程筆記-3"><div class="cover" style="background: var(--default-bg-color)"></div><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-04-10</div><div class="title">道德駭客實務入門-4&#x2F;8課程筆記-3</div></div></a></div><div><a href="/2023/04/17/learning-notes/hacking-class-4/" title="道德駭客實務入門-4&#x2F;15課程筆記"><div class="cover" style="background: var(--default-bg-color)"></div><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-04-17</div><div class="title">道德駭客實務入門-4&#x2F;15課程筆記</div></div></a></div></div></div><hr/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> Comment</span></div></div><div class="comment-wrap"><div><div id="disqus_thread"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="/img/avatar.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">Maochun</div><div class="author-info__description">對酒當歌，人生幾何</div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">Articles</div><div class="length-num">51</div></a><a href="/tags/"><div class="headline">Tags</div><div class="length-num">16</div></a><a href="/categories/"><div class="headline">Categories</div><div class="length-num">6</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/MaochunS"><i class="fab fa-github"></i><span>My Github</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="mailto:m20211222@gmail.com" target="_blank" title="Email"><i class="fas fa-envelope"></i></a><a class="social-icon" href="https://www.linkedin.com/in/maochun-s-4318b11ba" target="_blank" title="LinkedIn"><i class="fab fa-linkedin"></i></a></div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>Catalog</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Web-server"><span class="toc-number">1.</span> <span class="toc-text">Web server</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Invalid-Web-Server-Settings"><span class="toc-number">2.</span> <span class="toc-text">Invalid Web Server Settings</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%F0%9F%94%B8-Unlimited-uri-access-control"><span class="toc-number">2.1.</span> <span class="toc-text">🔸 Unlimited uri access control</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%F0%9F%94%B8-Unnecessary-services"><span class="toc-number">2.2.</span> <span class="toc-text">🔸 Unnecessary services</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%F0%9F%94%B8-Use-default-account-amp-password"><span class="toc-number">2.3.</span> <span class="toc-text">🔸 Use default account &amp; password</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%F0%9F%94%B8-Redundant-files"><span class="toc-number">2.4.</span> <span class="toc-text">🔸 Redundant files</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%F0%9F%94%B8-Debug-mode"><span class="toc-number">2.5.</span> <span class="toc-text">🔸 Debug mode</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%F0%9F%94%B8-Unlimited-file-access-rights"><span class="toc-number">2.6.</span> <span class="toc-text">🔸 Unlimited file access rights</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%F0%9F%94%B8-Web-server-vulnerabilities"><span class="toc-number">2.7.</span> <span class="toc-text">🔸 Web server vulnerabilities</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%A7%AD%E5%AE%A2%E5%B8%B8%E7%94%A8%E6%89%8B%E6%B3%95"><span class="toc-number">3.</span> <span class="toc-text">駭客常用手法</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%F0%9F%94%B8-CRLF"><span class="toc-number">3.1.</span> <span class="toc-text">🔸 CRLF</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%F0%9F%94%B8-Web-Cache-Deception-%E7%B6%B2%E9%A0%81%E5%BF%AB%E5%8F%96%E6%94%BB%E6%93%8A"><span class="toc-number">3.2.</span> <span class="toc-text">🔸 Web Cache Deception (網頁快取攻擊)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%F0%9F%94%B8-Server-Side-Request-Forgery-SSRF-%E4%BC%BA%E6%9C%8D%E5%99%A8%E7%AB%AF%E8%AB%8B%E6%B1%82%E5%81%BD%E9%80%A0"><span class="toc-number">3.3.</span> <span class="toc-text">🔸 Server-Side Request Forgery (SSRF) (伺服器端請求偽造)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%F0%9F%94%B8-Cross-Site-Request-Forgery-CSRF"><span class="toc-number">3.4.</span> <span class="toc-text">🔸 Cross-Site Request Forgery (CSRF)</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B8%B8%E7%94%A8%E5%B7%A5%E5%85%B7"><span class="toc-number">4.</span> <span class="toc-text">常用工具</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%F0%9F%94%B8-owasp-zap"><span class="toc-number">4.1.</span> <span class="toc-text">🔸 owasp-zap</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%F0%9F%94%B8-Openvas"><span class="toc-number">4.2.</span> <span class="toc-text">🔸 Openvas</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%F0%9F%94%B8-Burpsuite-Pro"><span class="toc-number">4.3.</span> <span class="toc-text">🔸 Burpsuite Pro</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%F0%9F%94%B8-Acunetix-%E4%BB%98%E8%B2%BB%E5%B7%A5%E5%85%B7"><span class="toc-number">4.4.</span> <span class="toc-text">🔸 Acunetix (付費工具)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%F0%9F%94%B8-Nessus"><span class="toc-number">4.5.</span> <span class="toc-text">🔸 Nessus</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%F0%9F%94%B8-Nikto"><span class="toc-number">4.6.</span> <span class="toc-text">🔸 Nikto</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%98%B2%E7%A6%A6%E6%96%B9%E6%B3%95"><span class="toc-number">5.</span> <span class="toc-text">防禦方法</span></a></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>Recent Post</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2023/08/16/APP%20Development/update-android-using-dfu/" title="Update the Android APP which uses nordic DFU">Update the Android APP which uses nordic DFU</a><time datetime="2023-08-16T10:10:39.000Z" title="Created 2023-08-16 18:10:39">2023-08-16</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2023/07/27/APP%20Development/development-computer/" title="工欲善其事，必先利其器 - 開發電腦及配件選擇">工欲善其事，必先利其器 - 開發電腦及配件選擇</a><time datetime="2023-07-27T06:34:41.000Z" title="Created 2023-07-27 14:34:41">2023-07-27</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2023/05/22/APP%20Development/ios-release/" title="Highlights for developers in the iOS release">Highlights for developers in the iOS release</a><time datetime="2023-05-22T01:18:37.000Z" title="Created 2023-05-22 09:18:37">2023-05-22</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2023/04/29/learning-notes/hacking-class-5-3/" title="道德駭客實務入門-4/22課程筆記-3">道德駭客實務入門-4/22課程筆記-3</a><time datetime="2023-04-29T02:53:21.000Z" title="Created 2023-04-29 10:53:21">2023-04-29</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2023/04/25/learning-notes/hacking-class-5-2/" title="道德駭客實務入門-4/22課程筆記-2">道德駭客實務入門-4/22課程筆記-2</a><time datetime="2023-04-25T03:05:58.000Z" title="Created 2023-04-25 11:05:58">2023-04-25</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2023 By Maochun</div><div class="framework-info"><span>Framework </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>Theme </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="Read Mode"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="Switch Between Light And Dark Mode"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="Toggle between single-column and double-column"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="Setting"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="Table Of Contents"><i class="fas fa-list-ul"></i></button><a id="to_comment" href="#post-comment" title="Scroll To Comments"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="Back To Top"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.umd.min.js"></script><div class="js-pjax"><script>function loadDisqus () {
+  var disqus_config = function () {
+    this.page.url = 'https://maochuns.github.io/2023/04/10/learning-notes/hacking-class-3/'
+    this.page.identifier = '/2023/04/10/learning-notes/hacking-class-3/'
+    this.page.title = '道德駭客實務入門-4/8課程筆記-1'
+  };
+
+  window.disqusReset = () => {
+    DISQUS.reset({
+      reload: true,
+      config: disqus_config
+    })
+  }
+
+  if (window.DISQUS) disqusReset()
+  else {
+    (function() { 
+      var d = document, s = d.createElement('script');
+      s.src = 'https://maochun-rojak-fun.disqus.com/embed.js';
+      s.setAttribute('data-timestamp', +new Date());
+      (d.head || d.body).appendChild(s);
+    })();
+  }
+
+  document.getElementById('darkmode').addEventListener('click', () => {
+    setTimeout(() => window.disqusReset(), 200)
+  })
+}
+
+if ('Disqus' === 'Disqus' || !false) {
+  if (false) btf.loadComment(document.getElementById('disqus_thread'), loadDisqus)
+  else loadDisqus()
+} else {
+  function loadOtherComment () {
+    loadDisqus()
+  }
+}
+</script></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
