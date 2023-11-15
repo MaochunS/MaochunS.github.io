@@ -2,6 +2,24 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://maochuns.github.io/2023/10/09/APP%20Development/android-bluetooth/</loc>
+    
+    <lastmod>2023-11-15</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://maochuns.github.io/2023/10/09/APP%20Development/ios-bluetooth/</loc>
+    
+    <lastmod>2023-11-15</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>https://maochuns.github.io/about/index.html</loc>
     
     <lastmod>2023-10-04</lastmod>
@@ -146,7 +164,7 @@
   </url>
   
   <url>
-    <loc>https://maochuns.github.io/2023/04/10/learning-notes/hacking-class-3-2/</loc>
+    <loc>https://maochuns.github.io/2023/04/10/learning-notes/hacking-class-3-3/</loc>
     
     <lastmod>2023-07-01</lastmod>
     
@@ -155,7 +173,7 @@
   </url>
   
   <url>
-    <loc>https://maochuns.github.io/2023/04/10/learning-notes/hacking-class-3-3/</loc>
+    <loc>https://maochuns.github.io/2023/04/25/learning-notes/hacking-class-5-2/</loc>
     
     <lastmod>2023-07-01</lastmod>
     
@@ -182,15 +200,6 @@
   </url>
   
   <url>
-    <loc>https://maochuns.github.io/2023/04/25/learning-notes/hacking-class-5-2/</loc>
-    
-    <lastmod>2023-07-01</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
     <loc>https://maochuns.github.io/2023/04/29/learning-notes/hacking-class-5-3/</loc>
     
     <lastmod>2023-07-01</lastmod>
@@ -201,6 +210,15 @@
   
   <url>
     <loc>https://maochuns.github.io/2023/04/25/learning-notes/hacking-class-5/</loc>
+    
+    <lastmod>2023-07-01</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://maochuns.github.io/2023/04/10/learning-notes/hacking-class-3-2/</loc>
     
     <lastmod>2023-07-01</lastmod>
     
@@ -245,7 +263,7 @@
   </url>
   
   <url>
-    <loc>https://maochuns.github.io/2023/02/25/Server/PostgreSQL-Command/</loc>
+    <loc>https://maochuns.github.io/2023/02/25/Server/Google-Consoles/</loc>
     
     <lastmod>2023-07-01</lastmod>
     
@@ -254,7 +272,7 @@
   </url>
   
   <url>
-    <loc>https://maochuns.github.io/2023/02/25/Server/Google-Consoles/</loc>
+    <loc>https://maochuns.github.io/2023/03/05/Server/server-django/</loc>
     
     <lastmod>2023-07-01</lastmod>
     
@@ -272,7 +290,7 @@
   </url>
   
   <url>
-    <loc>https://maochuns.github.io/2023/03/05/Server/server-django/</loc>
+    <loc>https://maochuns.github.io/2023/02/25/Server/PostgreSQL-Command/</loc>
     
     <lastmod>2023-07-01</lastmod>
     
@@ -344,15 +362,6 @@
   </url>
   
   <url>
-    <loc>https://maochuns.github.io/2023/02/18/APP%20Development/iOS-Actionable-Push-Notification/</loc>
-    
-    <lastmod>2023-07-01</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
     <loc>https://maochuns.github.io/2023/02/11/APP%20Development/iOS-LaunchScreen/</loc>
     
     <lastmod>2023-07-01</lastmod>
@@ -380,6 +389,15 @@
   </url>
   
   <url>
+    <loc>https://maochuns.github.io/2023/02/11/APP%20Development/iOS-QRCode-Scan/</loc>
+    
+    <lastmod>2023-07-01</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>https://maochuns.github.io/2023/03/04/APP%20Development/iOS-UDPBroadcast/</loc>
     
     <lastmod>2023-07-01</lastmod>
@@ -389,7 +407,7 @@
   </url>
   
   <url>
-    <loc>https://maochuns.github.io/2023/02/11/APP%20Development/iOS-QRCode-Scan/</loc>
+    <loc>https://maochuns.github.io/2023/02/18/APP%20Development/iOS-Actionable-Push-Notification/</loc>
     
     <lastmod>2023-07-01</lastmod>
     
@@ -470,7 +488,7 @@
   </url>
   
   <url>
-    <loc>https://maochuns.github.io/2023/01/26/APP%20Development/Local-Storage/</loc>
+    <loc>https://maochuns.github.io/2023/02/18/APP%20Development/Push-notification/</loc>
     
     <lastmod>2023-07-01</lastmod>
     
@@ -479,7 +497,7 @@
   </url>
   
   <url>
-    <loc>https://maochuns.github.io/2023/02/18/APP%20Development/Push-notification/</loc>
+    <loc>https://maochuns.github.io/2023/01/26/APP%20Development/Local-Storage/</loc>
     
     <lastmod>2023-07-01</lastmod>
     
@@ -499,7 +517,7 @@
 
   <url>
     <loc>https://maochuns.github.io/</loc>
-    <lastmod>2023-10-04</lastmod>
+    <lastmod>2023-11-15</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
@@ -507,112 +525,119 @@
   
   <url>
     <loc>https://maochuns.github.io/tags/Push-notification/</loc>
-    <lastmod>2023-10-04</lastmod>
+    <lastmod>2023-11-15</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://maochuns.github.io/tags/Publish-APP/</loc>
-    <lastmod>2023-10-04</lastmod>
+    <lastmod>2023-11-15</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://maochuns.github.io/tags/QRCode-Scan/</loc>
-    <lastmod>2023-10-04</lastmod>
+    <lastmod>2023-11-15</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://maochuns.github.io/tags/Splash/</loc>
-    <lastmod>2023-10-04</lastmod>
+    <lastmod>2023-11-15</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://maochuns.github.io/tags/UDP-Broadcast/</loc>
-    <lastmod>2023-10-04</lastmod>
+    <lastmod>2023-11-15</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://maochuns.github.io/tags/Bluetooth/</loc>
+    <lastmod>2023-11-15</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://maochuns.github.io/tags/Local-Variable/</loc>
-    <lastmod>2023-10-04</lastmod>
+    <lastmod>2023-11-15</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://maochuns.github.io/tags/XCode/</loc>
-    <lastmod>2023-10-04</lastmod>
+    <lastmod>2023-11-15</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://maochuns.github.io/tags/LaunchScreen/</loc>
-    <lastmod>2023-10-04</lastmod>
+    <lastmod>2023-11-15</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://maochuns.github.io/tags/Design-pattern/</loc>
-    <lastmod>2023-10-04</lastmod>
+    <lastmod>2023-11-15</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://maochuns.github.io/tags/Lang-basic/</loc>
-    <lastmod>2023-10-04</lastmod>
+    <lastmod>2023-11-15</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://maochuns.github.io/tags/Nordic-DFU/</loc>
-    <lastmod>2023-10-04</lastmod>
+    <lastmod>2023-11-15</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://maochuns.github.io/tags/Docker/</loc>
-    <lastmod>2023-10-04</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://maochuns.github.io/tags/PostgreSQL/</loc>
-    <lastmod>2023-10-04</lastmod>
+    <lastmod>2023-11-15</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://maochuns.github.io/tags/Google/</loc>
-    <lastmod>2023-10-04</lastmod>
+    <lastmod>2023-11-15</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://maochuns.github.io/tags/Blog/</loc>
-    <lastmod>2023-10-04</lastmod>
+    <lastmod>2023-11-15</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://maochuns.github.io/tags/PostgreSQL/</loc>
+    <lastmod>2023-11-15</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://maochuns.github.io/tags/Hacking/</loc>
-    <lastmod>2023-10-04</lastmod>
+    <lastmod>2023-11-15</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
@@ -621,42 +646,42 @@
   
   <url>
     <loc>https://maochuns.github.io/categories/APP-Development/</loc>
-    <lastmod>2023-10-04</lastmod>
+    <lastmod>2023-11-15</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://maochuns.github.io/categories/Server/</loc>
-    <lastmod>2023-10-04</lastmod>
+    <lastmod>2023-11-15</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://maochuns.github.io/categories/Google/</loc>
-    <lastmod>2023-10-04</lastmod>
+    <lastmod>2023-11-15</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://maochuns.github.io/categories/Projects/</loc>
-    <lastmod>2023-10-04</lastmod>
+    <lastmod>2023-11-15</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://maochuns.github.io/categories/Others/</loc>
-    <lastmod>2023-10-04</lastmod>
+    <lastmod>2023-11-15</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://maochuns.github.io/categories/Learning-notes/</loc>
-    <lastmod>2023-10-04</lastmod>
+    <lastmod>2023-11-15</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
